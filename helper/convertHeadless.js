@@ -7,7 +7,7 @@ const convert = (data, type) => {
 
     let arrMsf = [];
 
-    const results = data.results;
+    const results = data;
 
     results.forEach((result) => {
 
@@ -31,10 +31,10 @@ const convert = (data, type) => {
                             result.tags[0].source.ancestry.subcategory !== undefined) {
                             objMsf.tags.push(result.tags[0].source.ancestry.category.slug);
                             objMsf.tags.push(result.tags[0].source.ancestry.subcategory.slug);
+                        } else {
                         }
                     }
                 }
-
                 if (result.urls !== undefined) {
                     if (result.urls.thumb !== undefined) {
 

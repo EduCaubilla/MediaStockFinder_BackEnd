@@ -1,11 +1,19 @@
 import {
     toJson
 } from "unsplash-js";
-import unsplash from '../../model/photo/modelUnsplash'
-
+import unsplash from '../../model/photo/modelUnsplash';
+import pixabay from '../../model/photo/modelPixabay.js';
+import {
+    searchImages
+} from "pixabay-api";
+import {
+    json
+} from "express";
 
 class PhotoDao {
     constructor() {}
+
+    // Unsplash methods
 
     async searchOne(id) {
 
@@ -15,23 +23,25 @@ class PhotoDao {
 
     }
 
-    async searchList(search) {
+    async searchList(search, page) {
 
-        let data = await unsplash.search.photos(search, 1, 30);
+
+
+        let data = await unsplash.search.photos(search, page, 30);
 
         return toJson(data);
     }
 
-    async random() {
+    async random(page) {
 
-        let data = await unsplash.photos.listPhotos(1, 5, "latest");
+        let data = await unsplash.photos.listPhotos(page, 30, "latest");
 
         return toJson(data);
 
     }
 
-    async dlPhoto(idPhoto) {
-        
+    dlPhoto(idPhoto) {
+
         // let data = await unsplash.photos.getPhoto(idPhoto);
 
         // data = toJson(data);
@@ -40,36 +50,55 @@ class PhotoDao {
 
         // return send;
 
-        return await unsplash.photos.getPhoto(idPhoto)
+        return unsplash.photos.getPhoto(idPhoto)
             .then(toJson)
             .then(json => {
+                console.log(json);
+
+                // console.log(json.links.download_location);
+
+                // unsplash.photos.downloadPhoto(json.links.download_location);
                 unsplash.photos.downloadPhoto(json);
             });
     }
 
-    // async catNature(cat) {
+    async searchLatest(page) {
 
-    //     let data = await unsplash.search.collections(cat, 1, 30);
+        let data = await unsplash.photos.listPhotos(page, 30, "latest");
 
-    //     return toJson(data);
+        return toJson(data)
 
-    // }
+    }
 
-    // async catPeople(cat) {
+    async getOneRandom() {
 
-    //     let data = await unsplash.search.collections(cat, 1, 30);
+        let data = await unsplash.photos.getRandomPhoto({
+            featured: true
+        })
 
-    //     return toJson(data);
+        return toJson(data);
+    }
 
-    // }
+    // Pixabay methods
 
-    // async catFoodDrink(cat) {
+    async searchListPb(search) {
 
-    //     let data = await unsplash.search.collections(cat, 1, 30);
+        let data = await pixabay(search);
 
-    //     return toJson(data);
+        console.log(data);
 
-    // }
+        return toJson(data);
+
+
+        // const AUTH_PIXA_KEY = process.env.AUTH_PIXA_KEY;
+
+        // return searchImages(AUTH_PIXA_KEY, search, {
+        //         per_page: 3,
+        //         // category: "people",
+        //         order: "latest"
+        //     })
+        
+    }
 
 }
 

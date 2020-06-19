@@ -1,16 +1,25 @@
 import fetch from 'node-fetch';
-// import Msf from '../../helper/msf.js';
-import convert from '../../helper/convert.js';
-import photoDAO from '../../model/photo/dao.js';
+
+import convert from '../../../helper/convert.js';
+import photoDAO from '../../../model/photo/dao.js';
 
 global.fetch = fetch;
 
-const searchList = async (req, res, next) => {
+const catPeople = async (req, res, next) => {
 
     try {
-        const search = req.params.search;
-        // console.log(search);
+
+        const search = 'people';
+
+        // console.log(category);
+
+        // const data = await photoDAO.searchList(category);
+
+        // console.log(data);
+
         const type = 'unsplash';
+
+        // const resUnsplash = convert(data, type);
 
         let resUnsplash = [];
 
@@ -36,8 +45,6 @@ const searchList = async (req, res, next) => {
 
         resUnsplash.push(...resUnsplash1, ...resUnsplash2, ...resUnsplash3, ...resUnsplash4, ...resUnsplash5);
 
-        // console.log(resUnsplash)
-
         res.status(201).json(resUnsplash);
 
 
@@ -47,4 +54,4 @@ const searchList = async (req, res, next) => {
 
 }
 
-export default searchList;
+export default catPeople;

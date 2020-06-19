@@ -23,15 +23,15 @@ const convert = (data, type) => {
 
             objMsf.tags = [];
 
-            
-            if (result.tags.length > 0) {
-                if (result.tags[0].source !== undefined && result.tags[0].source.ancestry.category !== undefined &&
-                    result.tags[0].source.ancestry.subcategory !== undefined) {
-                    objMsf.tags.push(result.tags[0].source.ancestry.category.slug);
-                    objMsf.tags.push(result.tags[0].source.ancestry.subcategory.slug);
+            if (result.tags !== undefined) {
+                if (result.tags.length > 0) {
+                    if (result.tags[0].source !== undefined && result.tags[0].source.ancestry.category !== undefined &&
+                        result.tags[0].source.ancestry.subcategory !== undefined) {
+                        objMsf.tags.push(result.tags[0].source.ancestry.category.slug);
+                        objMsf.tags.push(result.tags[0].source.ancestry.subcategory.slug);
+                    }
                 }
             }
-            
             objMsf.imageThumb = result.urls.thumb;
             objMsf.imageSmall = result.urls.small;
             objMsf.imageMedium = result.urls.regular;

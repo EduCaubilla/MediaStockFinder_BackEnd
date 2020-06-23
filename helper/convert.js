@@ -6,16 +6,14 @@ const convert = (data, type) => {
     // console.log('entra en convert' + data);
 
     let arrMsf = [];
+    const objMsf = {};
+    objMsf.font = type;
 
-    const results = data.results;
+    if (type === 'unsplash') {
+        if (data.results !== undefined) {
+            const results = data.results;
 
-    results.forEach((result) => {
-
-        const objMsf = {};
-        objMsf.font = type;
-
-        switch (type) {
-            case 'unsplash':
+            results.forEach((result) => {
                 objMsf.idFont = result.id;
                 objMsf.title = result.alt_description;
                 objMsf.description = result.description;
@@ -44,21 +42,45 @@ const convert = (data, type) => {
                         objMsf.imageLarge = result.urls.full;
                     }
                 }
-
                 objMsf.downloadLink = result.links.download_location;
 
-                break;
-            case 'pexels':
-                break;
-            case 'pixabay':
-                break;
-            default:
-                console.log('error in the conversion');
+                
+            });
+            arrMsf.push(objMsf);
+    
         }
-        // console.log(objMsf);
+    }
+    
+    else if (type === 'pixabay') {
+        if (data.hits !== undefined) {
+            const results = data.hits;
 
-        arrMsf.push(objMsf);
-    });
+            results.forEach((result) => {
+                objMsf.idFont = result.id;
+                objMsf.title = '';
+                objMsf.description = result.tags;
+                objMsf.authorName = result.user;
+                objMsf.authorImage = result.userImageURL;
+                objMsf.categories = '';
+
+                objMsf.tags = result.tags;
+
+                objMsf.imageThumb = result.previewURL;
+                objMsf.imageSmall = result.previewURL;
+                objMsf.imageMedium = result.webformatURL;
+                objMsf.imageLarge = result.largeImageURL;
+
+                objMsf.downloadLink = result.largeImageURL;
+
+                
+            })
+            arrMsf.push(objMsf);
+        }
+    }
+
+    // console.log(objMsf);
+
+    // arrMsf.push(objMsf);
 
 
     // console.log(arrMsf);

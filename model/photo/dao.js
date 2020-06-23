@@ -1,19 +1,18 @@
 import {
     toJson
 } from "unsplash-js";
-import unsplash from '../../model/photo/modelUnsplash';
+import unsplash from '../../model/photo/modelUnsplash.js';
 import pixabay from '../../model/photo/modelPixabay.js';
-import {
-    searchImages
-} from "pixabay-api";
-import {
-    json
-} from "express";
+import pexels from "./modelPexels.js";
+import pixabayOne from "../../model/photo/modelPixabayOne.js";
+// import pexelsOne from "../../model/photo/modelPexelsOne.js";
+
+
 
 class PhotoDao {
     constructor() {}
 
-    // Unsplash methods
+    //----------------------- Unsplash methods
 
     async searchOne(id) {
 
@@ -24,8 +23,6 @@ class PhotoDao {
     }
 
     async searchList(search, page) {
-
-
 
         let data = await unsplash.search.photos(search, page, 30);
 
@@ -79,26 +76,91 @@ class PhotoDao {
         return toJson(data);
     }
 
-    // Pixabay methods
+    //------------------------- Pixabay methods
 
-    async searchListPb(search) {
+    async searchOnePb(id) {
+        console.log("SEARCH ONE PXBAY", id)
 
-        let data = await pixabay(search);
-
-        console.log(data);
+        let data = await pixabayOne(id);
 
         return toJson(data);
 
-
-        // const AUTH_PIXA_KEY = process.env.AUTH_PIXA_KEY;
-
-        // return searchImages(AUTH_PIXA_KEY, search, {
-        //         per_page: 3,
-        //         // category: "people",
-        //         order: "latest"
-        //     })
-        
     }
+
+    async searchListPb(search, order, category) {
+
+        console.log("SEARCH PXBAY", search)
+
+        let data = await pixabay(search, order, category);
+
+        // console.log(data);
+
+        return toJson(data);
+
+    }
+
+    async searchLatestPb(search, order, category) {
+
+        console.log("LATEST PXBAY", order)
+
+        let data = await pixabay(search, order, category);
+
+        // console.log(data);
+
+        return toJson(data);
+
+    }
+
+
+
+    //-------------------------- Pexels methods
+
+    async searchOnePx(id) {
+
+        let data = await pexels.photos
+            .show({
+                id: id,
+            })
+        return toJson(data);
+    }
+
+    async searchListPx(query, page) {
+
+        let data = await pexels.photos
+            .search({
+                query,
+                page: page,
+                per_page: 80,
+            })
+
+        // console.log(data);
+
+        return toJson(data);
+
+    }
+
+    async randomPx() {
+
+        let data = await pexels.photos.curated({
+            per_page: 80
+        })
+
+        // console.log(data);
+
+        return toJson(data);
+
+    }
+
+    // async oneRandomPx() {
+
+    //     let data = await pexels.photos.show()
+
+    //     // console.log(data);
+
+    //     return toJson(data);
+
+    // }
+
 
 }
 

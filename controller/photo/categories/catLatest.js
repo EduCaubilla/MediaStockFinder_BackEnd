@@ -1,6 +1,8 @@
 import fetch from 'node-fetch';
 
 import convertLatest from '../../../helper/convertHeadless.js';
+import convertPx from '../../../helper/convertPx.js'
+import convertPb from '../../../helper/convertPb.js'
 import photoDAO from '../../../model/photo/dao.js';
 
 global.fetch = fetch;
@@ -19,7 +21,7 @@ const catLatest = async (req, res, next) => {
 
         // const resUnsplash = convertLatest(data, type);
 
-        let resUnsplash = [];
+        let resPhoto = [];
 
         const data1 = await photoDAO.searchLatest(1);
         // console.log(data);
@@ -41,10 +43,39 @@ const catLatest = async (req, res, next) => {
         // console.log(data);
         const resUnsplash5 = convertLatest(data5, type);
 
-        resUnsplash.push(...resUnsplash1, ...resUnsplash2, ...resUnsplash3, ...resUnsplash4, ...resUnsplash5);
+
+        //PEXELS
+
+        const typePx = 'Pexels'
+
+        const dataPx = await photoDAO.randomPx();
+
+        const resPx = convertPx(dataPx, typePx);
 
 
-        res.status(201).json(resUnsplash);
+        //PIXABAY
+
+        const typePb = 'Pixabay';
+
+        // search.replaceAll(',', '+')
+
+        const order = 'latest'
+
+        const search = ''
+
+        const category = ''
+
+        const dataPb = await photoDAO.searchLatestPb(search, order, category);
+
+        // console.log(dataPb);
+
+        const resPb = convertPb(dataPb, typePb);
+
+
+        resPhoto.push(...resUnsplash1, ...resUnsplash2, ...resUnsplash3,
+            ...resUnsplash4, ...resUnsplash5, ...resPx, ...resPb);
+
+        res.status(201).json(resPhoto);
 
 
     } catch (error) {

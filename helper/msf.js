@@ -16,7 +16,7 @@ class Msf {
     
 }
 
-// incluir metodo msf find para llamar a cada api
+// incluir metodo msf find para llamar a cada api ?
 
 export default Msf;
 

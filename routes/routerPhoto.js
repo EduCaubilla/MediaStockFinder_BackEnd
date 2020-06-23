@@ -10,12 +10,14 @@ import dlPhoto from '../controller/photo/dlPhoto.js';
 import catLatest from '../controller/photo/categories/catLatest.js';
 import oneRandom from '../controller/photo/oneRandom.js';
 import pxb from '../controller/photo/pxb.js';
+import pex from '../controller/photo/pex.js';
+
 
 
 
 const router = Router();
 
-router.route("/test/:search").get(pxb)
+// router.route("/test/:search").get(pxb);
 
 router.route('/categories/nature').get(catNature);
 router.route('/categories/people').get(catPeople);
@@ -26,13 +28,9 @@ router.route('/random').get(random);
 router.route("/onerandom").get(oneRandom);
 
 router.route("/:search").get(searchList);
-router.route("/:type/:id").get(searchOne);
+router.route("/page/:type/:id").get(searchOne);
 
-// router.route("/download/:id").get(dlPhoto);
-
-
-
-
+router.route("/download/:id").get(dlPhoto);
 
 
 export default router;

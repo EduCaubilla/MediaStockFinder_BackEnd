@@ -1,9 +1,11 @@
 import fetch from 'node-fetch';
 
 import convertHeadless from '../../helper/convertHeadless.js';
+import convertPx from '../../helper/convertPx.js'
+import convertPb from '../../helper/convertPb.js'
 import photoDAO from '../../model/photo/dao.js';
 
- global.fetch = fetch;
+global.fetch = fetch;
 
 const random = async (req, res, next) => {
 
@@ -15,7 +17,7 @@ const random = async (req, res, next) => {
         const type = 'unsplash';
 
         // const resUnsplash = convertHeadless(data, type);
-        let resUnsplash = [];
+        let resPhoto = [];
 
         const data1 = await photoDAO.random(1);
         // console.log(data);
@@ -29,19 +31,47 @@ const random = async (req, res, next) => {
         // console.log(data);
         const resUnsplash3 = convertHeadless(data3, type);
 
-        const data4 = await photoDAO.random(4);
-        // console.log(data);
-        const resUnsplash4 = convertHeadless(data4, type);
+        // const data4 = await photoDAO.random(4);
+        // // console.log(data);
+        // const resUnsplash4 = convertHeadless(data4, type);
 
-        const data5 = await photoDAO.random(5);
-        // console.log(data);
-        const resUnsplash5 = convertHeadless(data5, type);
+        // const data5 = await photoDAO.random(5);
+        // // console.log(data);
+        // const resUnsplash5 = convertHeadless(data5, type);
 
-        resUnsplash.push(...resUnsplash1, ...resUnsplash2, ...resUnsplash3, ...resUnsplash4, ...resUnsplash5);
+        //PEXELS
 
-        res.status(201).json(resUnsplash);
+        const typePx = 'Pexels'
 
-        console.log(json(resUnsplash));
+        const dataPx = await photoDAO.randomPx();
+
+        const resPx = convertPx(dataPx, typePx);
+
+        //PIXABAY
+
+        const typePb = 'Pixabay';
+
+        // search.replaceAll(',', '+')
+
+        const search = '';
+
+        const order = 'popular';
+
+        const category = '';
+
+        const dataPb = await photoDAO.searchListPb(search, order, category);
+
+        console.log(dataPb);
+
+        const resPb = convertPb(dataPb, typePb);
+
+
+        resPhoto.push(...resUnsplash1, ...resUnsplash2, ...resUnsplash3,
+            ...resPx, ...resPb);
+
+        res.status(201).json(resPhoto);
+
+        console.log(json(resPhoto));
 
 
     } catch (error) {

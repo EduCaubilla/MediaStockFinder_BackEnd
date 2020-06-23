@@ -1,6 +1,9 @@
 import fetch from 'node-fetch';
 
 import convertOne from '../../helper/convertOne.js';
+import convertOnePb from '../../helper/convertOnePb.js'
+import convertOnePx from '../../helper/convertOnePx.js'
+
 import photoDAO from '../../model/photo/dao';
 
 global.fetch = fetch;
@@ -8,18 +11,52 @@ global.fetch = fetch;
 const searchOne = async (req, res, next) => {
 
     try {
-        const idPhoto = req.params.id;
-        console.log(idPhoto);
-        
-        // const type= req.params.type;
 
-        const data = await photoDAO.searchOne(idPhoto);
+        const type = req.params.type;
+        console.log(type);
 
-        const type = 'unsplash';
 
-        const resUnsplash = convertOne(data, type);
+        const id = req.params.id;
+        console.log(id);
 
-        res.status(201).json(resUnsplash);
+
+        switch (type) {
+            case 'unsplash':
+                const dataUns = await photoDAO.searchOne(id);
+
+                const resUnsplash = convertOne(dataUns, type);
+
+                res.status(201).json(resUnsplash);
+
+                break;
+            
+            case 'pixabay':
+                const dataPb = await photoDAO.searchOnePb(id);
+
+                const resPixabay = convertOnePb(dataPb, type);
+
+                res.status(201).json(resPixabay);
+
+                break;
+
+            case 'pexels':
+                const dataPx = await photoDAO.searchOnePx(id);
+
+                console.log(dataPx);
+                
+                const resPexels = convertOnePx(dataPx, type);
+
+                res.status(201).json(resPexels);
+            
+        }
+
+        // const data = await photoDAO.searchOne(id);
+
+        // const type = 'unsplash';
+
+        // const resUnsplash = convertOne(data, type);
+
+        // res.status(201).json(resUnsplash);
 
 
     } catch (error) {

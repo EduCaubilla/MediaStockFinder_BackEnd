@@ -8,10 +8,10 @@ dotenv.config();
 
 const AUTH_PIXA_KEY = process.env.AUTH_PIXA_KEY;
 
-const pixabayOne = (id) => {
+const pixabayFindOne = (id) => {
     return fetch(`https://pixabay.com/api/?key=${AUTH_PIXA_KEY}&id=${id}`)
 }
 
 
 
-export default pixabayOne;
+export default pixabayFindOne;

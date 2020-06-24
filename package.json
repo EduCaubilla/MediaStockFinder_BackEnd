@@ -11,14 +11,23 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
+    "follow-redirects": "^1.12.1",
+    "http-error": "0.0.6",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.20",
+    "mongoose-auto-increment": "^5.0.1",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.4",
     "pexels": "^1.0.1",
     "pixabay-api": "^1.0.4",
+    "require-https": "^1.1.2",
+    "stream": "0.0.2",
     "unsplash-js": "^6.0.0"
   }
 }

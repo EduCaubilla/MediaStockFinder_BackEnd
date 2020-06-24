@@ -4,7 +4,7 @@ import {
 import unsplash from '../../model/photo/modelUnsplash.js';
 import pixabay from '../../model/photo/modelPixabay.js';
 import pexels from "./modelPexels.js";
-import pixabayOne from "../../model/photo/modelPixabayOne.js";
+import pixabayFindOne from "./modelPixabayFindOne.js";
 // import pexelsOne from "../../model/photo/modelPexelsOne.js";
 
 
@@ -81,7 +81,7 @@ class PhotoDao {
     async searchOnePb(id) {
         console.log("SEARCH ONE PXBAY", id)
 
-        let data = await pixabayOne(id);
+        let data = await pixabayFindOne(id);
 
         return toJson(data);
 
@@ -109,6 +109,20 @@ class PhotoDao {
 
         return toJson(data);
 
+    }
+
+    async getOneRandomPb() {
+
+        const search = '';
+
+        const order = 'popular';
+
+        const category = 'backgrounds';
+
+
+        let data = await pixabay(search, order, category)
+
+        return toJson(data);
     }
 
 

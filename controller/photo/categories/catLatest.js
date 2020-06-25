@@ -48,7 +48,7 @@ const catLatest = async (req, res, next) => {
 
         const typePx = 'Pexels'
 
-        const dataPx = await photoDAO.randomPx();
+        const dataPx = await photoDAO.randomPx(1);
 
         const resPx = convertPx(dataPx, typePx);
 
@@ -65,7 +65,7 @@ const catLatest = async (req, res, next) => {
 
         const category = ''
 
-        const dataPb = await photoDAO.searchLatestPb(search, order, category);
+        const dataPb = await photoDAO.searchLatestPb(search, order, category, 1);
 
         // console.log(dataPb);
 

@@ -9,9 +9,15 @@ dotenv.config()
 const searchRandom = async (req, res, next) => {
     try {
 
-        const search = 'random';
+        // const search = 'random';
 
-        const page = 1;
+        const page = req.params.page;
+
+        // if (req.params.page !== undefined) {
+        //     page = req.params.page;
+        // }
+
+        console.log(page);
 
         let resVideo = [];
 
@@ -33,14 +39,14 @@ const searchRandom = async (req, res, next) => {
 
         const dataPx = await videoDAO.searchListPxRandom(page);
 
-        console.log(dataPx);
+        // console.log(dataPx);
 
         const resPx = convertPxVideo(dataPx, typePx);
 
 
         resVideo.push(...resPb, ...resPx);
 
-        console.log(resVideo);
+        console.log('Sale Video Random' + page);
 
         res.status(201).json(resVideo);
 

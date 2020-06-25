@@ -7,10 +7,11 @@ dotenv.config();
 
 const AUTH_PIXA_KEY = process.env.AUTH_PIXA_KEY;
 
-const pixabay = (search, order, category) => {
+const pixabay = (search, order, category,page) => {
 
     return searchImages(AUTH_PIXA_KEY, search, {
-        per_page: 80,
+        page: page,
+        per_page: 30,
         category: category,
         order: order,
         image_type: "photo",

@@ -50,7 +50,7 @@ class VideoDao {
 
         let data = await pixabayRandom(page);
 
-        console.log(data);
+        // console.log(data);
 
 
         return toJson(data);
@@ -89,7 +89,7 @@ class VideoDao {
         let data = await pexels.videos
             .popular({
                 page: page,
-                per_page: 15,
+                per_page: 20,
             })
 
         return toJson(data);

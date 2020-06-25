@@ -22,7 +22,7 @@ const convertPbVideo = (data, type) => {
 
         objMsf.duration = result.duration;
 
-        console.log(result.videos);
+        // console.log(result.videos);
         
 
         objMsf.imageThumb = result.videos.tiny.url;

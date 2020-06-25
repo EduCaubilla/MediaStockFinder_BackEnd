@@ -5,12 +5,12 @@ dotenv.config();
 
 const AUTH_PIXA_KEY = process.env.AUTH_PIXA_KEY;
 
-const per_page = 15;
+const per_page = 20;
 
 const pixabayRandom = (page) => {
 
     // return fetch(`https://pixabay.com/api/videos/?key=${AUTH_PIXA_KEY}&page=${page}&per_page=${per_page}`)
-    return fetch(`https://pixabay.com/api/videos/?key=${AUTH_PIXA_KEY}&page=${page}&per_page=${per_page}`)
+    return fetch(`https://pixabay.com/api/videos/?key=${AUTH_PIXA_KEY}&video_type=film&order=popular&page=${page}&per_page=${per_page}`)
 
 
 

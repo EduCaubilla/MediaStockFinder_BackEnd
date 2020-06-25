@@ -12,22 +12,20 @@ import oneRandom from '../controller/photo/oneRandom.js';
 import oneRandomPb from '../controller/photo/oneRandomPb.js';
 
 
-
 const router = Router();
-
 
 router.route('/categories/nature').get(catNature);
 router.route('/categories/people').get(catPeople);
 router.route('/categories/food&drink').get(catFoodDrink);
 router.route('/categories/latest').get(catLatest);
 
-router.route('/random').get(random);
-router.route("/onerandom").get(oneRandomPb);
+router.route('/random/:page').get(random);
+router.route("/onerandom").get(oneRandom);
 
-router.route("/:search").get(searchList);
+router.route("/:search/:page").get(searchList);
 router.route("/page/:type/:id").get(searchOne);
 
-router.route("/download/:type/:url").get(downloadPhoto);
+router.route("/download/:type/*").get(downloadPhoto);
 
 
 export default router;

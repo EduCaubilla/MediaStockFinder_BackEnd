@@ -14,42 +14,29 @@ const random = async (req, res, next) => {
 
         // console.log(data);
 
-        const type = 'unsplash';
+        const page = req.params.page;
+
+        const typeUns = 'unsplash';
 
         // const resUnsplash = convertHeadless(data, type);
         let resPhoto = [];
 
-        const data1 = await photoDAO.random(1);
+        const dataUns = await photoDAO.random(page);
         // console.log(data);
-        const resUnsplash1 = convertHeadless(data1, type);
+        const resUns = convertHeadless(dataUns, typeUns);
 
-        const data2 = await photoDAO.random(2);
-        // console.log(data);
-        const resUnsplash2 = convertHeadless(data2, type);
-
-        const data3 = await photoDAO.random(3);
-        // console.log(data);
-        const resUnsplash3 = convertHeadless(data3, type);
-
-        // const data4 = await photoDAO.random(4);
-        // // console.log(data);
-        // const resUnsplash4 = convertHeadless(data4, type);
-
-        // const data5 = await photoDAO.random(5);
-        // // console.log(data);
-        // const resUnsplash5 = convertHeadless(data5, type);
 
         //PEXELS
 
-        const typePx = 'Pexels'
+        const typePx = 'pexels'
 
-        const dataPx = await photoDAO.randomPx();
+        const dataPx = await photoDAO.randomPx(page);
 
         const resPx = convertPx(dataPx, typePx);
 
         //PIXABAY
 
-        const typePb = 'Pixabay';
+        const typePb = 'pixabay';
 
         // search.replaceAll(',', '+')
 
@@ -59,15 +46,14 @@ const random = async (req, res, next) => {
 
         const category = '';
 
-        const dataPb = await photoDAO.searchListPb(search, order, category);
+        const dataPb = await photoDAO.searchListPb(search, order, category, page);
 
         console.log(dataPb);
 
         const resPb = convertPb(dataPb, typePb);
 
 
-        resPhoto.push(...resUnsplash1, ...resUnsplash2, ...resUnsplash3,
-            ...resPx, ...resPb);
+        resPhoto.push(...resUns, ...resPx, ...resPb);
 
         res.status(201).json(resPhoto);
 

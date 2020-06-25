@@ -14,37 +14,23 @@ const searchList = async (req, res, next) => {
         const search = req.params.search;
         console.log(search);
 
+        const page = req.params.page;
+
         //UNSPLASH
         const type = 'Unsplash';
 
         let resPhoto = [];
 
-        const data1 = await photoDAO.searchList(search, 1);
+        const dataUns = await photoDAO.searchList(search, page);
         // console.log(data);
-        const resUnsplash1 = convertUns(data1, type);
-
-        const data2 = await photoDAO.searchList(search, 2);
-        // console.log(data);
-        const resUnsplash2 = convertUns(data2, type);
-
-        const data3 = await photoDAO.searchList(search, 3);
-        // console.log(data);
-        const resUnsplash3 = convertUns(data3, type);
-
-        // const data4 = await photoDAO.searchList(search, 4);
-        // // console.log(data);
-        // const resUnsplash4 = convertUns(data4, type);
-
-        // const data5 = await photoDAO.searchList(search, 5);
-        // // console.log(data);
-        // const resUnsplash5 = convertUns(data5, type);
+        const resUns = convertUns(dataUns, type);
 
 
         //PEXELS
 
         const typePx = 'Pexels'
 
-        const dataPx = await photoDAO.searchListPx(search, 1);
+        const dataPx = await photoDAO.searchListPx(search, page);
 
         const resPx = convertPx(dataPx, typePx);
 
@@ -53,21 +39,20 @@ const searchList = async (req, res, next) => {
 
         const typePb = 'Pixabay';
 
-        // search.replaceAll(',', '+')
+        // const searchPb = search.replaceAll(',', '+')
 
         const order = 'popular';
 
         const category = '';
 
-        const dataPb = await photoDAO.searchListPb(search, order, category);
+        const dataPb = await photoDAO.searchListPb(search, order, category, page);
 
         console.log(dataPb);
 
         const resPb = convertPb(dataPb, typePb);
 
 
-        //  resPhoto.push(...resUnsplash1, ...resUnsplash2, ...resUnsplash3, ...resUnsplash4, ...resUnsplash5, ...resPb, ...resPx);
-        resPhoto.push(...resUnsplash1, ...resUnsplash2, ...resUnsplash3, ...resPb, ...resPx);
+        resPhoto.push(...resUns, ...resPb, ...resPx);
 
         console.log(resPhoto)
 

@@ -37,28 +37,6 @@ class PhotoDao {
 
     }
 
-    dlPhoto(idPhoto) {
-
-        // let data = await unsplash.photos.getPhoto(idPhoto);
-
-        // data = toJson(data);
-
-        // const send = await unsplash.photos.downloadPhoto(json)
-
-        // return send;
-
-        return unsplash.photos.getPhoto(idPhoto)
-            .then(toJson)
-            .then(json => {
-                console.log(json);
-
-                // console.log(json.links.download_location);
-
-                // unsplash.photos.downloadPhoto(json.links.download_location);
-                unsplash.photos.downloadPhoto(json);
-            });
-    }
-
     async searchLatest(page) {
 
         let data = await unsplash.photos.listPhotos(page, 30, "latest");
@@ -87,11 +65,11 @@ class PhotoDao {
 
     }
 
-    async searchListPb(search, order, category) {
+    async searchListPb(search, order, category, page) {
 
         console.log("SEARCH PXBAY", search)
 
-        let data = await pixabay(search, order, category);
+        let data = await pixabay(search, order, category, page);
 
         // console.log(data);
 
@@ -99,11 +77,11 @@ class PhotoDao {
 
     }
 
-    async searchLatestPb(search, order, category) {
+    async searchLatestPb(search, order, category, page) {
 
         console.log("LATEST PXBAY", order)
 
-        let data = await pixabay(search, order, category);
+        let data = await pixabay(search, order, category, page);
 
         // console.log(data);
 
@@ -144,7 +122,7 @@ class PhotoDao {
             .search({
                 query,
                 page: page,
-                per_page: 80,
+                per_page: 30,
             })
 
         // console.log(data);
@@ -153,10 +131,11 @@ class PhotoDao {
 
     }
 
-    async randomPx() {
+    async randomPx(page) {
 
         let data = await pexels.photos.curated({
-            per_page: 80
+            page: page,
+            per_page: 30
         })
 
         // console.log(data);
@@ -164,16 +143,6 @@ class PhotoDao {
         return toJson(data);
 
     }
-
-    // async oneRandomPx() {
-
-    //     let data = await pexels.photos.show()
-
-    //     // console.log(data);
-
-    //     return toJson(data);
-
-    // }
 
 
 }

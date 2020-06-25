@@ -46,7 +46,7 @@ const catPeople = async (req, res, next) => {
 
         const typePx = 'Pexels'
 
-        const dataPx = await photoDAO.searchListPx(search);
+        const dataPx = await photoDAO.searchListPx(search, 1);
 
         const resPx = convertPx(dataPx, typePx);
 
@@ -61,7 +61,7 @@ const catPeople = async (req, res, next) => {
 
         const category = 'people'
 
-        const dataPb = await photoDAO.searchListPb(search, order, category);
+        const dataPb = await photoDAO.searchListPb(search, order, category, 1);
 
         // console.log(dataPb);
 

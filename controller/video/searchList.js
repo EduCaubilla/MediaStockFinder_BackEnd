@@ -12,7 +12,9 @@ const searchList = async (req, res, next) => {
         const search = req.params.search;
         console.log(search);
 
-        const page = 1;
+        // const page = 1;
+
+        const page = req.params.page;
 
         let resVideo = [];
 

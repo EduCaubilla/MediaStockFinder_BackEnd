@@ -12,22 +12,22 @@ import {
 const downloadPhoto = async (req, res, next) => {
 
     try {
-        const urlPhoto = req.params.url;
+        const typePhoto = req.params.type;
+        console.log(typePhoto);
+
+        const urlPhoto = req.params[0];
         console.log(urlPhoto);
 
         const url = urlPhoto;
 
-        const typePhoto = req.params.type;
-        console.log(typePhoto);
-
         const extension = url.split('.').pop();
 
-        switch (type) {
+        switch (typePhoto) {
             case ('pixabay'):
 
                 var externalReq = https.request(url, function (externalRes) {
 
-                    res.setHeader("content-disposition", "attachment; filename=imageMsf." + extension);
+                    res.setHeader("content-disposition", "attachment; filename=imageMSF." + extension);
                     externalRes.pipe(res);
                 });
                 externalReq.end();
@@ -47,35 +47,12 @@ const downloadPhoto = async (req, res, next) => {
 
                 var externalReq = https.request(url, function (externalRes) {
 
-                    res.setHeader("content-disposition", "attachment; filename=imageMsf." + extension);
+                    res.setHeader("content-disposition", "attachment; filename=imageMsf.jpg");
                     externalRes.pipe(res);
                 });
                 externalReq.end();
                 break;
         }
-
-        // res.setHeader("content-disposition", "attachment; filename=imagenMsf.jpg");
-
-        // res.setHeader("content-disposition", "attachment; filename=" + filename);
-        // request(videoUrl).pipe(res);
-
-        // let data = await photoDAO.dlPhoto(idPhoto);
-
-        // console.log(data);
-
-        // // .pipe(res);
-        // res.status(201).json(data);
-
-
-        // return unsplash.photos.getPhoto(idPhoto)
-        //     .then(toJson)
-        //     .then(json => {
-        //         console.log(json);
-
-        //         // console.log(json.links.download_location);
-        //         // unsplash.photos.downloadPhoto(json.links.download_location);
-        //         unsplash.photos.downloadPhoto(json);
-        //     });
 
     } catch (err) {
         console.log('error en el controller' + err);

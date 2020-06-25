@@ -25,9 +25,9 @@ const searchList = async (req, res, next) => {
         const dataPb = await videoDAO.searchListPb(search, page);
 
         // console.log(dataPb);
-        
+
         const resPb = convertPbVideo(dataPb, typePb);
-        
+
 
         // PEXELS
 
@@ -36,13 +36,15 @@ const searchList = async (req, res, next) => {
         const dataPx = await videoDAO.searchListPx(search, page);
 
         // console.log(dataPx);
-        
+
         const resPx = convertPxVideo(dataPx, typePx);
 
         resVideo.push(...resPb, ...resPx);
 
 
-        // console.log(resVideo);
+        console.log(resVideo);
+        console.log('sale SearchList Video' + page);
+
 
         res.status(201).json(resVideo);
 

@@ -5,6 +5,9 @@ dotenv.config();
 
 const url = process.env.MONGODB_URI
 
+console.log(url);
+
+
 const connection = mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

@@ -13,9 +13,6 @@ const searchRandom = async (req, res, next) => {
 
         const page = req.params.page;
 
-        // if (req.params.page !== undefined) {
-        //     page = req.params.page;
-        // }
 
         console.log(page);
 
@@ -39,7 +36,7 @@ const searchRandom = async (req, res, next) => {
 
         const dataPx = await videoDAO.searchListPxRandom(page);
 
-        // console.log(dataPx);
+        console.log(dataPx);
 
         const resPx = convertPxVideo(dataPx, typePx);
 

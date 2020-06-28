@@ -18,7 +18,7 @@ const convert = (data, type) => {
             objMsf.title = result.alt_description;
             objMsf.description = result.description;
             objMsf.authorName = result.user.name;
-            objMsf.authorImage = result.user.profile_image;
+            // objMsf.authorImage = result.user.profile_image;
             objMsf.categories = result.categories;
 
             objMsf.tags = [];

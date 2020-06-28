@@ -26,6 +26,8 @@ class PhotoDao {
 
         let data = await unsplash.search.photos(search, page, 30);
 
+
+
         return toJson(data);
     }
 
@@ -47,9 +49,7 @@ class PhotoDao {
 
     async getOneRandom() {
 
-        let data = await unsplash.photos.getRandomPhoto({
-            featured: true
-        })
+        let data = await unsplash.photos.getRandomPhoto()
 
         return toJson(data);
     }

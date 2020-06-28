@@ -12,7 +12,7 @@ const register = async (req, res, next) => {
 
         const newUser = {
             name: body.name,
-            last_name: body.last_name,
+            lastName: body.lastName,
             email: body.email,
             password: passwordHash,
         };

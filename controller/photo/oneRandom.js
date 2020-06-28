@@ -1,10 +1,7 @@
-import fetch from 'node-fetch';
 
 import convertOneRandom from '../../helper/convertOneRandom.js';
-
 import photoDAO from '../../model/photo/dao.js';
 
-global.fetch = fetch;
 
 const oneRandom = async (req, res, next) => {
 

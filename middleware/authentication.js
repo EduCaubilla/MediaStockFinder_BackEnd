@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import HTTPerror from "http-error";
+import userDAO from '../model/user/dao'
 
 // import userDAO from "";
 
@@ -33,13 +34,17 @@ const authUser = async (req, res, next) => {
     const decodedToken = await tokenVerify(token);
 
     if (!token || !decodedToken.id) {
-      next(HTTPerror(401, { error: "token invalid or missing" }));
+      next(HTTPerror(401, {
+        error: "token invalid or missing"
+      }));
     } else {
       const user = await userDAO.findUserById(decodedToken.id);
 
-      user === null
-        ? next(HTTPerror(401, { error: "token not matching user" }))
-        : next();
+      user === null ?
+        next(HTTPerror(401, {
+          error: "token not matching user"
+        })) :
+        next();
     }
   } catch (err) {
     console.log(err);

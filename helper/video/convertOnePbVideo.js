@@ -1,3 +1,6 @@
+import photoDAO from '../../model/photo/dao'
+import convertOnePb from '../convertOnePb'
+
 const convertOnePbVideo = (data, type) => {
 
     // console.log(type);
@@ -9,9 +12,6 @@ const convertOnePbVideo = (data, type) => {
     const result = data.hits[0];
 
     let arrMsf = [];
-
-    // const result = data.hits;
-
 
     const objMsf = {};
     objMsf.font = type;

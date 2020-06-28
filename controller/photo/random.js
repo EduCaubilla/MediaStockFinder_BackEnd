@@ -48,7 +48,7 @@ const random = async (req, res, next) => {
 
         const dataPb = await photoDAO.searchListPb(search, order, category, page);
 
-        console.log(dataPb);
+        // console.log(dataPb);
 
         const resPb = convertPb(dataPb, typePb);
 
@@ -57,7 +57,7 @@ const random = async (req, res, next) => {
 
         res.status(201).json(resPhoto);
 
-        console.log(json(resPhoto));
+        // console.log(json(resPhoto));
 
 
     } catch (error) {

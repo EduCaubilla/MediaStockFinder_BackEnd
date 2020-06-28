@@ -7,7 +7,7 @@ const userSchema = mongoose.Schema({
         required: [true, "Name required"]
     },
 
-    last_name: {
+    lastName: {
         type: String,
         required: [true, "Last name required"]
     },
@@ -23,14 +23,18 @@ const userSchema = mongoose.Schema({
     },
 
     desk: [{
-        idFont: String,
         font: String,
+        idFont: String,
         title: String,
         description: String,
         authorName: String,
-        authorimage: String,
-        categories: String,
-        tags: String,
+        authorimage: {
+            small: String,
+            medium: String,
+            large: String
+        },
+        categories: [],
+        tags: [],
         imageThumb: String,
         imageSmall: String,
         imageMedium: String,

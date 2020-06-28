@@ -22,7 +22,7 @@ const login = async (req, res, next) => {
         });
 
         console.log(user);
-        
+
         const passwordCorrect =
             user === null ?
             false :
@@ -35,13 +35,14 @@ const login = async (req, res, next) => {
         } else {
             const userToken = {
                 user: user.email,
-                id: user.id,
+                id: user._id,
             };
 
             const token = await jwt.sign(userToken, process.env.SECRET);
 
             res.status(201).json({
-                token
+                token,
+                'user': user
             });
         }
     } catch (error) {

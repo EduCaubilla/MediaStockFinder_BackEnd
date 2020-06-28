@@ -37,9 +37,7 @@ const searchList = async (req, res, next) => {
                 const responsePx = convertOnePxVideo(dataPx, 'pexels');
 
                 res.status(201).json(responsePx);
-
         }
-
 
     } catch (error) {
         console.log('error general' + error);

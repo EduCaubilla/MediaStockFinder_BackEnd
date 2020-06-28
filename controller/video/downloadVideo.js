@@ -1,7 +1,3 @@
-// import fetch from 'node-fetch';
-
-// import https from 'https';
-
 import {
     http,
     https
@@ -9,19 +5,14 @@ import {
 
 import atob from 'atob';
 
-// global.fetch = fetch;
 
 const downloadVideo = async (req, res, next) => {
 
     try {
-        // const urlVideo1 = req.params[0];
-        // console.log(urlVideo1);
+
 
         const urlVideo = req.params[0];
         console.log(urlVideo);
-
-        // const typeVideo = req.params.type;
-        // console.log(typeVideo);
 
         const url = atob(`${urlVideo}`);
         console.log(url);

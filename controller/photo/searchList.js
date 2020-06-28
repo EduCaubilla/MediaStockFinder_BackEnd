@@ -17,7 +17,7 @@ const searchList = async (req, res, next) => {
         const page = req.params.page;
 
         //UNSPLASH
-        const type = 'Unsplash';
+        const type = 'unsplash';
 
         let resPhoto = [];
 
@@ -28,7 +28,7 @@ const searchList = async (req, res, next) => {
 
         //PEXELS
 
-        const typePx = 'Pexels'
+        const typePx = 'pexels'
 
         const dataPx = await photoDAO.searchListPx(search, page);
 
@@ -37,7 +37,7 @@ const searchList = async (req, res, next) => {
 
         //PIXABAY
 
-        const typePb = 'Pixabay';
+        const typePb = 'pixabay';
 
         // const searchPb = search.replaceAll(',', '+')
 

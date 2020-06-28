@@ -3,10 +3,10 @@ POST http://localhost:9000/user/register
 Content-Type: application/json
 
 {
-    "name":"Edu",
-    "last_name":"Caubilla",
-    "email":"edu@mail.com",
-    "password":"1234"
+    "name":"Mengano",
+    "lastName":"De Tal",
+    "email":"mengano@mail.com",
+    "password":"123"
 }
 
 
@@ -17,7 +17,128 @@ POST http://localhost:9000/user/login
 Content-Type: application/json
 
 {
-    "email":"edu@mail.com",
-    "password":"1234"
+    "email":"fulano@mail.com",
+    "password":"123"
 }
 
+
+#####################
+
+// PARA CAMBIAR USER PORQUE MACHACA LA INFO ANTERIOR
+
+POST http://localhost:9000/user/5ef4b21617fafd4f9314a8ac
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZnVsYW5vQG1haWwuY29tIiwiaWQiOiI1ZWY0YjIxNjE3ZmFmZDRmOTMxNGE4YWMiLCJpYXQiOjE1OTMxNjI2MzR9.NKihMi_--TSYKjsiHNL8ThKwsBG2S2A_tgmGZX-_8B0
+
+
+{
+  "_id": "5ef4b21617fafd4f9314a8ac",
+  "name": "Fulano",
+  "lastName": "DeTal",
+  "email": "fulano@mail.com",
+  "password": "$2b$10$iTu1y5S7wMLu0YpcbAfzn.TGQkF.E0vVcfMmM5Ojq9rMrjQsz8dGm",
+  "desk": [
+    {
+      "categories": [],
+      "tags": [],
+      "_id": "5ef5d7862ad8a9350f2c0a4c",
+      "font": "unsplash",
+      "idFont": "fkAI2uEseCc",
+      "title": "man in black suit jacket and pants standing on traffic light in grayscale photography",
+      "description": "George Floyd Protest",
+      "authorName": "Mike Von",
+      "imageThumb": "https://images.unsplash.com/photo-1591253761409-457cf8101285?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageSmall": "https://images.unsplash.com/photo-1591253761409-457cf8101285?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageMedium": "https://images.unsplash.com/photo-1591253761409-457cf8101285?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageLarge": "https://images.unsplash.com/photo-1591253761409-457cf8101285?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0MDg2Nn0"
+    },
+    {
+      "categories": [],
+      "tags": [],
+      "_id": "5ef5d7902ad8a9350f2c0a4d",
+      "font": "unsplash",
+      "idFont": "fkAI2uEseCc",
+      "title": "man in black suit jacket and pants standing on traffic light in grayscale photography",
+      "description": "George Floyd Protest",
+      "authorName": "Mike Von",
+      "imageThumb": "https://images.unsplash.com/photo-1591253761409-457cf8101285?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageSmall": "https://images.unsplash.com/photo-1591253761409-457cf8101285?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageMedium": "https://images.unsplash.com/photo-1591253761409-457cf8101285?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageLarge": "https://images.unsplash.com/photo-1591253761409-457cf8101285?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0MDg2Nn0"
+    },
+    {
+      "categories": [],
+      "tags": [],
+      "_id": "5ef5daf92ad8a9350f2c0a4e",
+      "font": "unsplash",
+      "idFont": "mh4YJqKlOr4",
+      "title": "person holding burning wood during daytime",
+      "description": null,
+      "authorName": "Patrick Hendry",
+      "imageThumb": "https://images.unsplash.com/photo-1592326195381-e363dcc611ea?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageSmall": "https://images.unsplash.com/photo-1592326195381-e363dcc611ea?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageMedium": "https://images.unsplash.com/photo-1592326195381-e363dcc611ea?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageLarge": "https://images.unsplash.com/photo-1592326195381-e363dcc611ea?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0MDg2Nn0"
+    },
+    {
+      "categories": [],
+      "tags": [],
+      "_id": "5ef5db132ad8a9350f2c0a4f",
+      "font": "unsplash",
+      "idFont": "lLctqdwTYes",
+      "title": "white and brown long coated small dog in pink hoodie",
+      "description": "King Charles Cavalier dog in a summer dress on white background",
+      "authorName": "FLOUFFY",
+      "imageThumb": "https://images.unsplash.com/photo-1591946653358-5a2cf4c2a1bc?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageSmall": "https://images.unsplash.com/photo-1591946653358-5a2cf4c2a1bc?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageMedium": "https://images.unsplash.com/photo-1591946653358-5a2cf4c2a1bc?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageLarge": "https://images.unsplash.com/photo-1591946653358-5a2cf4c2a1bc?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0MDg2Nn0"
+    },
+    {
+      "categories": [],
+      "tags": [],
+      "_id": "5ef5db282ad8a9350f2c0a50",
+      "font": "unsplash",
+      "idFont": "XGqySn8pTT4",
+      "title": "orange purple and green abstract painting",
+      "description": null,
+      "authorName": "Allec Gomes",
+      "imageThumb": "https://images.unsplash.com/photo-1591155631332-f3a8d44210cb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageSmall": "https://images.unsplash.com/photo-1591155631332-f3a8d44210cb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageMedium": "https://images.unsplash.com/photo-1591155631332-f3a8d44210cb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0",
+      "imageLarge": "https://images.unsplash.com/photo-1591155631332-f3a8d44210cb?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0MDg2Nn0"
+    }
+  ],
+  "__v": 0
+}
+
+###################
+
+// PARA VER USER 
+
+GET http://localhost:9000/user/5ef4b21617fafd4f9314a8ac
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZnVsYW5vQG1haWwuY29tIiwiaWQiOiI1ZWY0YjIxNjE3ZmFmZDRmOTMxNGE4YWMiLCJpYXQiOjE1OTMyNzk3MDB9.TQ72-n04vezpTKoW-4-NQE0suzn0AqwWijn239bLMDk
+
+##################
+
+//PARA AÑADIR IMAGEN A DESK
+
+POST http://localhost:9000/user/desk/5ef4b21617fafd4f9314a8ac
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZnVsYW5vQG1haWwuY29tIiwiaWQiOiI1ZWY0YjIxNjE3ZmFmZDRmOTMxNGE4YWMiLCJpYXQiOjE1OTMxNjI2MzR9.NKihMi_--TSYKjsiHNL8ThKwsBG2S2A_tgmGZX-_8B0
+
+{"font":"unsplash","idFont":"XGqySn8pTT4","title":"orange purple and green abstract painting","description":null,"authorName":"Allec Gomes","authorImage":{"small":"https://images.unsplash.com/profile-1590413354417-c1befb996909image?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32","medium":"https://images.unsplash.com/profile-1590413354417-c1befb996909image?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=64&w=64","large":"https://images.unsplash.com/profile-1590413354417-c1befb996909image?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=128&w=128"},"categories":[],"tags":[],"imageThumb":"https://images.unsplash.com/photo-1591155631332-f3a8d44210cb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0","imageSmall":"https://images.unsplash.com/photo-1591155631332-f3a8d44210cb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0","imageMedium":"https://images.unsplash.com/photo-1591155631332-f3a8d44210cb?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjE0MDg2Nn0","imageLarge":"https://images.unsplash.com/photo-1591155631332-f3a8d44210cb?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0MDg2Nn0"}
+
+################
+
+DELETE  http://localhost:9000/user/desk/5ef5d4b6765945331180bc10
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZnVsYW5vQG1haWwuY29tIiwiaWQiOiI1ZWY0YjIxNjE3ZmFmZDRmOTMxNGE4YWMiLCJpYXQiOjE1OTMxNjI2MzR9.NKihMi_--TSYKjsiHNL8ThKwsBG2S2A_tgmGZX-_8B0
+
+###############
+
+GET http://localhost:9000/photo/page/unsplash/wDifg5xc9Z4
+Content-Type: application/json
+
+##############

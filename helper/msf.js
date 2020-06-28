@@ -16,14 +16,5 @@ class Msf {
     
 }
 
-// incluir metodo msf find para llamar a cada api ?
-
 export default Msf;
 
-// class Persona {
-//     constructor(pNombre, pApellidos, pEdad, pAficiones = []) {
-//         this.nombre = pNombre;
-//         this.apellidos = pApellidos;
-//         this.edad = pEdad;
-//         this.aficiones = pAficiones;
-//     }

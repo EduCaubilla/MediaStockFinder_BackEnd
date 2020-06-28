@@ -9,7 +9,6 @@ import catFoodDrink from '../controller/photo/categories/catFoodDrink.js';
 import downloadPhoto from '../controller/photo/downloadPhoto.js';
 import catLatest from '../controller/photo/categories/catLatest.js';
 import oneRandom from '../controller/photo/oneRandom.js';
-import oneRandomPb from '../controller/photo/oneRandomPb.js';
 
 
 const router = Router();

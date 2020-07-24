@@ -48,7 +48,7 @@ const catFoodDrink = async (req, res, next) => {
 
         //PEXELS
 
-        const typePx = 'Pexels'
+        const typePx = 'pexels'
 
         const dataPx = await photoDAO.searchListPx(search, 1);
 
@@ -57,7 +57,7 @@ const catFoodDrink = async (req, res, next) => {
 
         //PIXABAY
 
-        const typePb = 'Pixabay';
+        const typePb = 'pixabay';
 
         // search.replaceAll(',', '+')
 

@@ -29,7 +29,7 @@ const catLatest = async (req, res, next) => {
 
         //PEXELS
 
-        const typePx = 'Pexels'
+        const typePx = 'pexels'
 
         const dataPx = await photoDAO.randomPx(1);
 
@@ -37,7 +37,7 @@ const catLatest = async (req, res, next) => {
 
         //PIXABAY
 
-        const typePb = 'Pixabay';
+        const typePb = 'pixabay';
 
         // search.replaceAll(',', '+')
 

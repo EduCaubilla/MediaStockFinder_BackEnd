@@ -1,5 +1,3 @@
-
-
 const convertPb = (data, type) => {
 
     // console.log(type);
@@ -11,15 +9,16 @@ const convertPb = (data, type) => {
 
     results.forEach((result) => {
         const objMsf = {};
-        objMsf.font = type;
+        objMsf.source = type;
 
-        objMsf.idFont = `${result.id}`;
+        objMsf.idSource = result.id;
         objMsf.title = 'Untitled';
         objMsf.description = result.tags;
         objMsf.authorName = result.user;
-        // objMsf.authorImage = result.userImageURL;
-        objMsf.categories = [];
+        objMsf.authorImage = result.userImageURL;
+        objMsf.authorLink = `https://pixabay.com/users/${result.user}`;
 
+        objMsf.categories = [];
         objMsf.tags = result.tags;
 
         objMsf.imageThumb = result.webformatURL;
@@ -28,12 +27,10 @@ const convertPb = (data, type) => {
         objMsf.imageLarge = result.largeImageURL;
 
         objMsf.downloadLink = result.largeImageURL;
-
+        objMsf.imageSourceLink = result.pageURL;
 
         arrMsf.push(objMsf);
     })
-
-    // console.log(arrMsf);
 
     return arrMsf;
 }

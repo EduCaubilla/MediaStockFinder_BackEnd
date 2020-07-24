@@ -1,4 +1,3 @@
-
 const convertPxVideo = (data, type) => {
 
     // console.log(type);
@@ -10,13 +9,14 @@ const convertPxVideo = (data, type) => {
 
     results.forEach((result) => {
         const objMsf = {};
-        objMsf.font = type;
+        objMsf.source = type;
 
-        objMsf.idFont = `${result.id}`;
+        objMsf.idSource = `${result.id}`;
         objMsf.title = 'Untitled';
         objMsf.description = result.tags.join();
         objMsf.authorName = result.user.name;
-        // objMsf.authorImage = result.userImageURL;
+        objMsf.authorLink = result.user.url;
+        objMsf.authorImage = '';
         objMsf.categories = [];
 
         objMsf.tags = result.tags;
@@ -29,7 +29,7 @@ const convertPxVideo = (data, type) => {
         objMsf.imageLarge = result.video_files[0].link;
 
         objMsf.downloadLink = result.video_files[0].link;
-
+        objMsf.imageSourceLink = result.url;
 
         arrMsf.push(objMsf);
     })

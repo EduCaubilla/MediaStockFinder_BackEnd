@@ -12,24 +12,26 @@ const convertOnePx = (data, type) => {
 
 
     const objMsf = {};
-    objMsf.font = type;
+    objMsf.source = type;
 
-    objMsf.idFont = `${result.id}`;
+    objMsf.idSource = result.id;
     objMsf.title = 'Untitled';
     objMsf.description = '';
     objMsf.authorName = result.photographer;
-    // objMsf.authorImage = result.userImageURL;
+    objMsf.authorImage = '';
+    objMsf.authorLink = result.photographer_url;
+
     objMsf.categories = [];
 
     objMsf.tags = [];
 
-    objMsf.imageThumb = result.src.tiny;
-    objMsf.imageSmall = result.src.medium;
+    objMsf.imageThumb = result.src.small;
+    objMsf.imageSmall = result.src.tiny;
     objMsf.imageMedium = result.src.large;
-    objMsf.imageLarge = result.src.original;
+    objMsf.imageLarge = result.src.large2x;
 
     objMsf.downloadLink = result.src.original;
-
+    objMsf.imageSourceLink = result.url;
 
     arrMsf.push(objMsf);
 

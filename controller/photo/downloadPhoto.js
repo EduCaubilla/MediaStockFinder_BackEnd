@@ -1,17 +1,17 @@
-// import fetch from 'node-fetch';
-
-// import http from 'http';
-
 import {
     http,
     https
 } from 'follow-redirects';
 
-// global.fetch = fetch;
+import photoDAO from '../../model/photo/dao';
+
 
 const downloadPhoto = async (req, res, next) => {
 
     try {
+        const idPhoto = req.params.id;
+        console.log(idPhoto);
+
         const typePhoto = req.params.type;
         console.log(typePhoto);
 
@@ -27,7 +27,7 @@ const downloadPhoto = async (req, res, next) => {
 
                 var externalReq = https.request(url, function (externalRes) {
 
-                    res.setHeader("content-disposition", "attachment; filename=imageMSF." + extension);
+                    res.setHeader("content-disposition", "attachment; filename=imageMsf." + extension);
                     externalRes.pipe(res);
                 });
                 externalReq.end();
@@ -45,7 +45,13 @@ const downloadPhoto = async (req, res, next) => {
 
             case ('unsplash'):
 
-                var externalReq = https.request(url, function (externalRes) {
+                const dataUns = await photoDAO.searchOne(idPhoto)
+
+                const urlUns = await photoDAO.downloadPhoto(dataUns)
+
+                const linkUns = urlUns.url
+
+                var externalReq = https.request(linkUns, function (externalRes) {
 
                     res.setHeader("content-disposition", "attachment; filename=imageMsf.jpg");
                     externalRes.pipe(res);

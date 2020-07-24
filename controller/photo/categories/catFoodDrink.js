@@ -1,9 +1,9 @@
 import fetch from 'node-fetch';
 
-import convert from '../../../helper/convert.js';
 import convertPx from '../../../helper/convertPx.js'
 import convertPb from '../../../helper/convertPb.js'
 import photoDAO from '../../../model/photo/dao.js';
+import convertUns from '../../../helper/convertUns.js';
 
 global.fetch = fetch;
 
@@ -27,23 +27,23 @@ const catFoodDrink = async (req, res, next) => {
 
         const data1 = await photoDAO.searchList(search, 1);
         // console.log(data);
-        const resUnsplash1 = convert(data1, type);
+        const resUnsplash1 = convertUns(data1, type);
 
         const data2 = await photoDAO.searchList(search, 2);
         // console.log(data);
-        const resUnsplash2 = convert(data2, type);
+        const resUnsplash2 = convertUns(data2, type);
 
         const data3 = await photoDAO.searchList(search, 3);
         // console.log(data);
-        const resUnsplash3 = convert(data3, type);
+        const resUnsplash3 = convertUns(data3, type);
 
         const data4 = await photoDAO.searchList(search, 4);
         // console.log(data);
-        const resUnsplash4 = convert(data4, type);
+        const resUnsplash4 = convertUns(data4, type);
 
         const data5 = await photoDAO.searchList(search, 5);
         // console.log(data);
-        const resUnsplash5 = convert(data5, type);
+        const resUnsplash5 = convertUns(data5, type);
 
 
         //PEXELS

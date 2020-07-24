@@ -1,11 +1,7 @@
-import fetch from 'node-fetch';
-
-import convertHeadless from '../../helper/convertHeadless.js';
 import convertPx from '../../helper/convertPx.js'
 import convertPb from '../../helper/convertPb.js'
 import photoDAO from '../../model/photo/dao.js';
-
-global.fetch = fetch;
+import convertUns from '../../helper/convertUns.js';
 
 const random = async (req, res, next) => {
 
@@ -23,7 +19,7 @@ const random = async (req, res, next) => {
 
         const dataUns = await photoDAO.random(page);
         // console.log(data);
-        const resUns = convertHeadless(dataUns, typeUns);
+        const resUns = convertUns(dataUns, typeUns);
 
 
         //PEXELS

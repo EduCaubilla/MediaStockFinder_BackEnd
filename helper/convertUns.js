@@ -5,17 +5,20 @@ const convertUns = (data, type) => {
 
     let arrMsf = [];
 
-    const results = data.results;
+    let results;
+
+    data.results === undefined ? results = data : results = data.results;
 
     results.forEach((result) => {
         const objMsf = {};
-        objMsf.font = type;
+        objMsf.source = type;
 
-        objMsf.idFont = result.id;
+        objMsf.idSource = result.id;
         objMsf.title = result.alt_description;
         objMsf.description = result.description;
         objMsf.authorName = result.user.name;
-        // objMsf.authorImage = result.user.profile_image;
+        objMsf.authorImage = result.user.profile_image;
+        objMsf.authorLink = result.user.links.html;
         objMsf.categories = result.categories;
 
         objMsf.tags = [];
@@ -41,16 +44,10 @@ const convertUns = (data, type) => {
         }
 
         objMsf.downloadLink = result.links.download_location;
+        objMsf.imageSourceLink = result.links.html;
 
         arrMsf.push(objMsf);
     })
-    // console.log(objMsf);
-
-    // arrMsf.push(objMsf);
-
-
-
-    // console.log(arrMsf);
 
     return arrMsf;
 }

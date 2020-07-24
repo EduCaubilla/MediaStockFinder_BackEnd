@@ -14,13 +14,15 @@ const convertOnePbVideo = (data, type) => {
     let arrMsf = [];
 
     const objMsf = {};
-    objMsf.font = type;
+    objMsf.source = type;
 
-    objMsf.idFont = `${result.id}`;
+    objMsf.idSource = result.id;
     objMsf.title = 'Untitled';
     objMsf.description = result.tags;
     objMsf.authorName = result.user;
-    // objMsf.authorImage = result.userImageURL;
+    objMsf.authorImage = result.userImageURL;
+    objMsf.authorLink = `https://pixabay.com/users/${result.user}`;
+
     objMsf.categories = [];
 
     objMsf.tags = result.tags;
@@ -33,7 +35,7 @@ const convertOnePbVideo = (data, type) => {
     objMsf.imageLarge = result.videos.large.url;
 
     objMsf.downloadLink = result.videos.large.url;
-
+    objMsf.imageSourceLink = result.pageURL;
 
     arrMsf.push(objMsf);
 

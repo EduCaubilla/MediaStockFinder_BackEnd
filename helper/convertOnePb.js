@@ -1,5 +1,3 @@
-
-
 const convertOnePb = (data, type) => {
 
     // console.log(type);
@@ -10,31 +8,29 @@ const convertOnePb = (data, type) => {
     const result = data.hits[0];
 
     console.log(result);
-    
-        const objMsf = {};
-        objMsf.font = type;
 
-        objMsf.idFont = `${result.id}`;
-        objMsf.title = 'Untitled';
-        objMsf.description = result.tags;
-        objMsf.authorName = result.user;
-        // objMsf.authorImage = result.userImageURL;
-        objMsf.categories = [];
+    const objMsf = {};
+    objMsf.source = type;
 
-        objMsf.tags = result.tags;
+    objMsf.idSource = result.id;
+    objMsf.title = 'Untitled';
+    objMsf.description = result.tags;
+    objMsf.authorName = result.user;
+    objMsf.authorImage = result.userImageURL;
+    objMsf.authorLink = `https://pixabay.com/users/${result.user}`;
 
-        objMsf.imageThumb = result.webformatURL;
-        objMsf.imageSmall = result.webformatURL;
-        objMsf.imageMedium = result.webformatURL;
-        objMsf.imageLarge = result.largeImageURL;
+    objMsf.categories = [];
+    objMsf.tags = result.tags;
 
-        objMsf.downloadLink = result.largeImageURL;
+    objMsf.imageThumb = result.webformatURL;
+    objMsf.imageSmall = result.webformatURL;
+    objMsf.imageMedium = result.webformatURL;
+    objMsf.imageLarge = result.largeImageURL;
 
+    objMsf.downloadLink = result.largeImageURL;
+    objMsf.imageSourceLink = result.pageURL;
 
-        arrMsf.push(objMsf);
-
-
-    // console.log(arrMsf);
+    arrMsf.push(objMsf);
 
     return arrMsf;
 }

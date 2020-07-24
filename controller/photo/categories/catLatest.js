@@ -1,48 +1,31 @@
-import fetch from 'node-fetch';
-
-import convertLatest from '../../../helper/convertHeadless.js';
+import convertUns from '../../../helper/convertUns.js';
 import convertPx from '../../../helper/convertPx.js'
 import convertPb from '../../../helper/convertPb.js'
 import photoDAO from '../../../model/photo/dao.js';
 
-global.fetch = fetch;
-
 const catLatest = async (req, res, next) => {
 
     try {
-
-        // const category = 'people';
-
-        // console.log(category);
-
-        // const data = await photoDAO.searchLatest();
+        //UNSPLASH
 
         const type = 'unsplash';
-
-        // const resUnsplash = convertLatest(data, type);
 
         let resPhoto = [];
 
         const data1 = await photoDAO.searchLatest(1);
-        // console.log(data);
-        const resUnsplash1 = convertLatest(data1, type);
+        const resUnsplash1 = convertUns(data1, type);
 
         const data2 = await photoDAO.searchLatest(2);
-        // console.log(data);
-        const resUnsplash2 = convertLatest(data2, type);
+        const resUnsplash2 = convertUns(data2, type);
 
         const data3 = await photoDAO.searchLatest(3);
-        // console.log(data);
-        const resUnsplash3 = convertLatest(data3, type);
+        const resUnsplash3 = convertUns(data3, type);
 
         const data4 = await photoDAO.searchLatest(4);
-        // console.log(data);
-        const resUnsplash4 = convertLatest(data4, type);
+        const resUnsplash4 = convertUns(data4, type);
 
         const data5 = await photoDAO.searchLatest(5);
-        // console.log(data);
-        const resUnsplash5 = convertLatest(data5, type);
-
+        const resUnsplash5 = convertUns(data5, type);
 
         //PEXELS
 
@@ -51,7 +34,6 @@ const catLatest = async (req, res, next) => {
         const dataPx = await photoDAO.randomPx(1);
 
         const resPx = convertPx(dataPx, typePx);
-
 
         //PIXABAY
 

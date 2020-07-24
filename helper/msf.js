@@ -1,17 +1,19 @@
 class Msf {
-    constructor(pIdFont, pFont, pTitle, pDescription, pAuthorName, pAuthorImage, pCategories = [], pTags = [], pImageThumb, pImageSmall, pImageMedium, pImageLarge) {
-        this.idFont = pIdFont,
-            this.font = pFont,
-            this.title = pTitle,
-            this.description = pDescription,
-            this.authorName = pAuthorName,
-            this.authorimage = pAuthorImage,
-            this.categories = pCategories,
-            this.tags = pTags,
-            this.imageThumb = pImageThumb,
-            this.imageSmall = pImageSmall,
-            this.imageMedium = pImageMedium,
-            this.imageLarge = pImageLarge
+    constructor(pIdSource, pSource, pSourceLink, pTitle, pDescription, pAuthorName, pAuthorImage, pAuthorLink, pCategories = [], pTags = [], pImageThumb, pImageSmall, pImageMedium, pImageLarge) {
+        this.idSource = pIdSource,
+        this.source = pSource,
+        this.sourceLink = pSourceLink,
+        this.title = pTitle,
+        this.description = pDescription,
+        this.authorName = pAuthorName,
+        this.authorimage = pAuthorImage,
+        this.authorLink = pAuthorLink,
+        this.categories = pCategories,
+        this.tags = pTags,
+        this.imageThumb = pImageThumb,
+        this.imageSmall = pImageSmall,
+        this.imageMedium = pImageMedium,
+        this.imageLarge = pImageLarge
     }
     
 }

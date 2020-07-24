@@ -19,14 +19,11 @@ class PhotoDao {
         let data = await unsplash.photos.getPhoto(id);
 
         return toJson(data);
-
     }
 
     async searchList(search, page) {
 
         let data = await unsplash.search.photos(search, page, 30);
-
-
 
         return toJson(data);
     }
@@ -36,7 +33,6 @@ class PhotoDao {
         let data = await unsplash.photos.listPhotos(page, 30, "latest");
 
         return toJson(data);
-
     }
 
     async searchLatest(page) {
@@ -44,14 +40,22 @@ class PhotoDao {
         let data = await unsplash.photos.listPhotos(page, 30, "latest");
 
         return toJson(data)
-
     }
 
     async getOneRandom() {
 
         let data = await unsplash.photos.getRandomPhoto()
 
+        // console.log('GET ONE RANDOM UNSPLASH', data);
+
         return toJson(data);
+    }
+
+    async downloadPhoto(request) {
+
+        let data = await unsplash.photos.downloadPhoto(request)
+
+        return toJson(data)
     }
 
     //------------------------- Pixabay methods
@@ -93,12 +97,23 @@ class PhotoDao {
 
         const search = '';
 
-        const order = 'popular';
+        let order;
 
-        const category = 'backgrounds';
+        if (Math.random() >= 0.5) {
+            order = 'popular'
+        } else {
+            order = 'latest'
+        }
 
+        const category = '';
 
-        let data = await pixabay(search, order, category)
+        const page = Math.ceil(Math.random() * 10).toString();
+        
+        console.log(page);
+            
+        const orientation = 'horizontal';
+
+        let data = await pixabay(search, order, category, page, orientation)
 
         return toJson(data);
     }

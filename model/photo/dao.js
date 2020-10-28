@@ -7,8 +7,6 @@ import pexels from "./modelPexels.js";
 import pixabayFindOne from "./modelPixabayFindOne.js";
 // import pexelsOne from "../../model/photo/modelPexelsOne.js";
 
-
-
 class PhotoDao {
     constructor() {}
 

@@ -1,12 +1,9 @@
-import fetch from 'node-fetch';
 import convertUns from '../../helper/convertUns.js';
 import convertPb from '../../helper/convertPb.js';
 import convertPx from '../../helper/convertPx.js';
 
 import photoDAO from '../../model/photo/dao.js';
 
-
-// global.fetch = fetch;
 
 const searchList = async (req, res, next) => {
 
@@ -22,7 +19,6 @@ const searchList = async (req, res, next) => {
         let resPhoto = [];
 
         const dataUns = await photoDAO.searchList(search, page);
-        // console.log(data);
         const resUns = convertUns(dataUns, type);
 
 
@@ -38,8 +34,6 @@ const searchList = async (req, res, next) => {
         //PIXABAY
 
         const typePb = 'pixabay';
-
-        // const searchPb = search.replaceAll(',', '+')
 
         const order = 'popular';
 

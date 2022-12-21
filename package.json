@@ -24,7 +24,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.11",
     "mongoose-auto-increment": "^5.0.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "nodemon": "^2.0.6",
     "npm-check-updates": "^9.2.3",
     "pexels": "^1.0.1",

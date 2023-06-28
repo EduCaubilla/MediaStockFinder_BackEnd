@@ -1,5 +1,5 @@
-import photoDAO from '../../model/photo/dao'
-import convertOnePb from '../convertOnePb'
+import photoDAO from '../../model/photo/dao.js'
+import convertOnePb from '../convertOnePb.js'
 
 const convertOnePbVideo = (data, type) => {
 

@@ -5,16 +5,14 @@ dotenv.config();
 
 const AUTH_PIXA_KEY = process.env.AUTH_PIXA_KEY;
 
-// const per_page = 80;
+const pixabayOne = async (id) => {
 
-const pixabayOne = (id) => {
+  const response = await fetch(`https://pixabay.com/api/videos/?key=${AUTH_PIXA_KEY}&id=${id}`);
 
-    return fetch(`https://pixabay.com/api/videos/?key=${AUTH_PIXA_KEY}&id=${id}`)
-    // .then(res => res.json())
-    // .then((json) => {
-    //     console.log(json);
-    //     res.json(json);
-    // });
+  const data = await response.json();
+
+  return data;
+
 }
 
 export default pixabayOne;

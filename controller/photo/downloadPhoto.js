@@ -1,9 +1,6 @@
-import {
-    http,
-    https
-} from 'follow-redirects';
+import https from 'follow-redirects';
 
-import photoDAO from '../../model/photo/dao';
+import photoDAO from '../../model/photo/dao.js';
 
 
 const downloadPhoto = async (req, res, next) => {
@@ -26,7 +23,6 @@ const downloadPhoto = async (req, res, next) => {
             case ('pixabay'):
 
                 var externalReq = https.request(url, function (externalRes) {
-
                     res.setHeader("content-disposition", "attachment; filename=imageMsf." + extension);
                     externalRes.pipe(res);
                 });
@@ -36,7 +32,6 @@ const downloadPhoto = async (req, res, next) => {
             case ('pexels'):
 
                 var externalReq = https.request(url, function (externalRes) {
-
                     res.setHeader("content-disposition", "attachment; filename=imageMsf." + extension);
                     externalRes.pipe(res);
                 });
@@ -47,16 +42,17 @@ const downloadPhoto = async (req, res, next) => {
 
                 const dataUns = await photoDAO.searchOne(idPhoto)
 
-                const urlUns = await photoDAO.downloadPhoto(dataUns)
+                const urlUns = await photoDAO.downloadPhoto(dataUns.links.download_location)
 
                 const linkUns = urlUns.url
 
                 var externalReq = https.request(linkUns, function (externalRes) {
-
                     res.setHeader("content-disposition", "attachment; filename=imageMsf.jpg");
                     externalRes.pipe(res);
                 });
+            
                 externalReq.end();
+                
                 break;
         }
 

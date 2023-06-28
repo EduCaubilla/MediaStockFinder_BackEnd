@@ -1,6 +1,4 @@
-import {
-    toJson
-} from "unsplash-js";
+
 import unsplash from '../../model/photo/modelUnsplash.js';
 import pixabay from '../../model/photo/modelPixabay.js';
 import pexels from "./modelPexels.js";
@@ -14,81 +12,94 @@ class PhotoDao {
 
     async searchOne(id) {
 
-        let data = await unsplash.photos.getPhoto(id);
+      let data = await unsplash.photos.get({
+        photoId: id
+      });
 
-        return toJson(data);
+      return data.response;
     }
 
-    async searchList(search, page) {
+  async searchList(search, page) {
 
-        let data = await unsplash.search.photos(search, page, 30);
+      let data = await unsplash.search.getPhotos({
+        query: search,
+        page: page,
+        perPage: 30
+      });
 
-        return toJson(data);
+      return data.response;
     }
 
     async random(page) {
 
-        let data = await unsplash.photos.listPhotos(page, 30, "latest");
+      let data = await unsplash.photos.list({
+        page: page,
+        perPage: 30,
+        orderBy: "latest"
+      });
 
-        return toJson(data);
+      return data;
     }
 
     async searchLatest(page) {
 
-        let data = await unsplash.photos.listPhotos(page, 30, "latest");
+      let data = await unsplash.photos.list({
+        page: page,
+        perPage: 30,
+        orderBy: "latest"
+      });
 
-        return toJson(data)
+        return data.response;
     }
 
     async getOneRandom() {
 
-        let data = await unsplash.photos.getRandomPhoto()
+      let data = await unsplash.photos.getRandom({});
 
-        // console.log('GET ONE RANDOM UNSPLASH', data);
+      //console.log("Entra en getOneRandom Unsplash -----------------> \n", data);
 
-        return toJson(data);
+      return data.response;
     }
 
     async downloadPhoto(request) {
 
-        let data = await unsplash.photos.downloadPhoto(request)
+      let data;
 
-        return toJson(data)
+      await unsplash.photos.get({
+        photoId: request
+      })
+      .then((result) => {
+        if (result.type === 'success') {
+          const photo = result.response;
+          data = photo;
+        unsplash.photos.trackDownload({
+          downloadLocation: photo.links.download_location,
+          });
+        }
+      })
+
+      return data.response;
     }
 
     //------------------------- Pixabay methods
 
     async searchOnePb(id) {
-        console.log("SEARCH ONE PXBAY", id)
-
-        let data = await pixabayFindOne(id);
-
-        return toJson(data);
-
+      console.log("SEARCH ONE PXBAY", id)
+      let data = await pixabayFindOne(id);
+      return data;
     }
 
     async searchListPb(search, order, category, page) {
-
-        console.log("SEARCH PXBAY", search)
-
-        let data = await pixabay(search, order, category, page);
-
-        // console.log(data);
-
-        return toJson(data);
-
+      console.log("SEARCH PXBAY", search)
+      let data = await pixabay(search, order, category, page);
+      return data;
     }
 
     async searchLatestPb(search, order, category, page) {
-
-        console.log("LATEST PXBAY", order)
-
-        let data = await pixabay(search, order, category, page);
-
-        // console.log(data);
-
-        return toJson(data);
-
+      console.log("LATEST PXBAY", order)
+      let data = await pixabay(search, order, category, page);
+      // console.log(data);
+      return data;
     }
 
     async getOneRandomPb() {
@@ -113,7 +124,7 @@ class PhotoDao {
 
         let data = await pixabay(search, order, category, page, orientation)
 
-        return toJson(data);
+        return data;
     }
 
 
@@ -121,12 +132,12 @@ class PhotoDao {
     //-------------------------- Pexels methods
 
     async searchOnePx(id) {
-
-        let data = await pexels.photos
-            .show({
-                id: id,
-            })
-        return toJson(data);
+      let data = await pexels.photos
+          .show({
+              id: id,
+          })
+      //console.log("Entra SearchOne de Pexels -> " + data);
+      return data;
     }
 
     async searchListPx(query, page) {
@@ -137,11 +148,7 @@ class PhotoDao {
                 page: page,
                 per_page: 30,
             })
-
-        // console.log(data);
-
-        return toJson(data);
-
+        return data;
     }
 
     async randomPx(page) {
@@ -150,14 +157,8 @@ class PhotoDao {
             page: page,
             per_page: 30
         })
-
-        // console.log(data);
-
-        return toJson(data);
-
+        return data;
     }
-
-
 }
 
 export default new PhotoDao();

@@ -1,4 +1,4 @@
-import userDAO from '../../model/user/dao';
+import userDAO from '../../model/user/dao.js';
 
 const deleteItem = async (req, res, next) => {
 

@@ -26,6 +26,4 @@ router.route('/random/:page').get(random);
 router.route("/:search/:page").get(searchList);
 router.route("/page/:type/:id").get(searchOne);
 
-
-
 export default router;

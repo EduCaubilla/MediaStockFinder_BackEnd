@@ -7,14 +7,14 @@ const AUTH_PIXA_KEY = process.env.AUTH_PIXA_KEY;
 
 const per_page = 20;
 
-const pixabayRandom = (page) => {
+const pixabayRandom = async (page) => {
 
-    // return fetch(`https://pixabay.com/api/videos/?key=${AUTH_PIXA_KEY}&page=${page}&per_page=${per_page}`)
-    return fetch(`https://pixabay.com/api/videos/?key=${AUTH_PIXA_KEY}&video_type=film&order=popular&page=${page}&per_page=${per_page}`)
+  const response = await fetch(`https://pixabay.com/api/videos/?key=${AUTH_PIXA_KEY}&video_type=film&order=popular&page=${page}&per_page=${per_page}`);
 
+  const data = await response.json();
 
+  return data;
 
-    // https: pixabay.com/api/videos/?key=17031486-5324a5d5400de3f3de9d0f6b4&page=1&per_page=5
 }
 
 export default pixabayRandom;

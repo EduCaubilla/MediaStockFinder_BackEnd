@@ -1,7 +1,4 @@
-import {
-    http,
-    https
-} from 'follow-redirects';
+import https from 'follow-redirects';
 
 import atob from 'atob';
 

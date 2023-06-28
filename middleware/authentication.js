@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import HTTPerror from "http-error";
-import userDAO from '../model/user/dao'
+import userDAO from '../model/user/dao.js'
 
 // import userDAO from "";
 

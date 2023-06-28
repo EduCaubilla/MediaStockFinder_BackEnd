@@ -1,4 +1,4 @@
-import userDAO from '../../model/user/dao';
+import userDAO from '../../model/user/dao.js';
 
 const addItem = async (req, res, next) => {
 

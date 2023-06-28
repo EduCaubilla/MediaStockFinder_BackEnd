@@ -3,7 +3,7 @@ import convertOne from '../../helper/convertOne.js';
 import convertOnePb from '../../helper/convertOnePb.js'
 import convertOnePx from '../../helper/convertOnePx.js'
 
-import photoDAO from '../../model/photo/dao';
+import photoDAO from '../../model/photo/dao.js';
 
 const searchOne = async (req, res, next) => {
 
@@ -19,7 +19,7 @@ const searchOne = async (req, res, next) => {
 
         switch (type) {
             case 'unsplash':
-                const dataUns = await photoDAO.searchOne(id);
+            const dataUns = await photoDAO.searchOne(id);
 
                 const resUnsplash = convertOne(dataUns, type);
 

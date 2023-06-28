@@ -5,7 +5,9 @@ const convertPbVideo = (data, type) => {
 
     let arrMsf = [];
 
-    const results = data.hits;
+  const results = data.hits;
+  
+  console.log(results);
 
     results.forEach((result) => {
         const objMsf = {};

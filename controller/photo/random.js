@@ -6,21 +6,17 @@ import convertUns from '../../helper/convertUns.js';
 const random = async (req, res, next) => {
 
     try {
-        // const data = await photoDAO.random();
-
-        // console.log(data);
-
         const page = req.params.page;
 
         const typeUns = 'unsplash';
 
-        // const resUnsplash = convertHeadless(data, type);
         let resPhoto = [];
 
         const dataUns = await photoDAO.random(page);
-        // console.log(data);
-        const resUns = convertUns(dataUns, typeUns);
 
+        const resUns = convertUns(dataUns, typeUns);
+      
+        console.log("Response random Unsplash -> " + resUns);
 
         //PEXELS
 
@@ -29,6 +25,8 @@ const random = async (req, res, next) => {
         const dataPx = await photoDAO.randomPx(page);
 
         const resPx = convertPx(dataPx, typePx);
+        
+        console.log("Response random Pexels -> " + resPx);
 
         //PIXABAY
 
@@ -47,7 +45,8 @@ const random = async (req, res, next) => {
         // console.log(dataPb);
 
         const resPb = convertPb(dataPb, typePb);
-
+      
+        console.log("Response random Pixabay -> " + resPb);
 
         resPhoto.push(...resUns, ...resPx, ...resPb);
 

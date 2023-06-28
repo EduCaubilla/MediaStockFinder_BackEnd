@@ -20,6 +20,4 @@ const pixabay = (search, order, category, page, orientation) => {
     })
 }
 
-
-
 export default pixabay;

@@ -1,10 +1,11 @@
 {
-  "name": "Media_Stock_Finder_BACK",
-  "version": "1.0.0",
+  "name": "Media_Stock_Finder_BackeEnd",
+  "version": "1.0.1",
   "description": "",
+  "type": "module",
   "main": "app.js",
   "scripts": {
-    "start": "node -r esm app.js",
+    "start": "NODE_OPTIONS='--experimental-specifier-resolution=node' node -r esm app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,23 +15,26 @@
     "atob": "^2.1.2",
     "axios": "^0.21.2",
     "bcrypt": "^5.0.0",
+    "chokidar": "^3.5.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.3",
     "follow-redirects": "^1.14.8",
+    "got": "^13.0.0",
     "http-error": "0.0.6",
     "https": "^1.0.0",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^5.13.15",
-    "mongoose-auto-increment": "^5.0.1",
+    "mongoose": "^7.3.1",
     "node-fetch": "^2.6.7",
-    "nodemon": "^2.0.20",
+    "nodemon": "^1.19.4",
     "npm-check-updates": "^16.7.4",
     "pexels": "^1.0.1",
     "pixabay-api": "^1.0.4",
-    "require-https": "^1.1.2",
+    "require-https": "^1.1.1",
+    "semver": "^7.5.3",
     "stream": "0.0.2",
-    "unsplash-js": "^6.3.0"
+    "unsplash-js": "^7.0.18",
+    "update-notifier": "^6.0.2"
   }
 }

@@ -19,11 +19,12 @@ const searchList = async (req, res, next) => {
         let resPhoto = [];
 
         const dataUns = await photoDAO.searchList(search, page);
+      
         const resUns = convertUns(dataUns, type);
 
+        console.log("Salida listado Unsplash ---> " + resUns);
 
         //PEXELS
-
         const typePx = 'pexels'
 
         const dataPx = await photoDAO.searchListPx(search, page);
@@ -32,7 +33,6 @@ const searchList = async (req, res, next) => {
 
 
         //PIXABAY
-
         const typePb = 'pixabay';
 
         const order = 'popular';
@@ -41,14 +41,15 @@ const searchList = async (req, res, next) => {
 
         const dataPb = await photoDAO.searchListPb(search, order, category, page);
 
-        console.log(dataPb);
+        //console.log(dataPb);
 
         const resPb = convertPb(dataPb, typePb);
 
+        //SHUFFLE AND OUTPUT
 
         resPhoto.push(...resUns, ...resPb, ...resPx);
 
-        console.log(resPhoto)
+        //console.log(resPhoto)
 
         res.status(201).json(resPhoto);
 

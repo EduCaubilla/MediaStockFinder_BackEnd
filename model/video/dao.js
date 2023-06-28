@@ -1,6 +1,3 @@
-import {
-    toJson
-} from "unsplash-js";
 
 import pixabay from '../../model/video/modelPixabay.js';
 import pexels from '../../model/video/modelPexels.js';
@@ -9,7 +6,6 @@ import pixabayOne from '../../model/video/modelPixabayOne.js';
 import pexelsOne from '../../model/video/modelPexelsOne.js';
 
 import pixabayRandom from '../../model/video/modelPixabayRandom.js'
-
 
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
@@ -23,25 +19,13 @@ class VideoDao {
 
     async searchListPb(search, page) {
 
-        // const AUTH_PIXA_KEY = process.env.AUTH_PIXA_KEY;
-
-        // const per_page = 80;
-
-        // return fetch(`https://pixabay.com/api/videos/?key=${AUTH_PIXA_KEY}&q=${search}&page=${page}&per_page=${per_page}`)
-        //     .then(res => res.json())
-        //     .then((json) => {
-        //         res.json(json);
-        //         console.log(json);
-        //     });
-
         console.log("SEARCH PXBAY", search);
 
         let data = await pixabay(search, page);
 
         console.log(data);
 
-
-        return toJson(data);
+        return data;
     }
 
     async searchListPbRandom(page) {
@@ -53,7 +37,7 @@ class VideoDao {
         // console.log(data);
 
 
-        return toJson(data);
+        return data;
     }
 
     async searchOnePb(id) {
@@ -62,7 +46,7 @@ class VideoDao {
 
         let data = await pixabayOne(id);
 
-        return toJson(data);
+        return data;
 
     }
 
@@ -79,7 +63,7 @@ class VideoDao {
                 per_page: 15,
             })
 
-        return toJson(data);
+        return data;
     }
 
     async searchListPxRandom(page) {
@@ -92,7 +76,7 @@ class VideoDao {
                 per_page: 20,
             })
 
-        return toJson(data);
+        return data;
     }
 
     async searchOnePx(id) {
@@ -103,7 +87,7 @@ class VideoDao {
                 id: id
             })
 
-        return toJson(data);
+        return data;
     }
 
 

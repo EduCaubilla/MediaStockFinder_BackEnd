@@ -11,7 +11,13 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+var corsOptions = {
+  httpOnly: true,
+  secure: true,
+  sameSite: 'none',
+}
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 

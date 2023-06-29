@@ -1,4 +1,3 @@
-import connection from '../../dbMongo/mongo.js'
 import User from '../../model/user/model.js'
 
 class UserDAO {

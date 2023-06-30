@@ -22,7 +22,7 @@ const searchList = async (req, res, next) => {
       
         const resUns = convertUns(dataUns, type);
 
-        console.log("Salida listado Unsplash ---> " + resUns);
+        //console.log("Salida listado Unsplash ---> " + resUns);
 
         //PEXELS
         const typePx = 'pexels'
@@ -41,7 +41,7 @@ const searchList = async (req, res, next) => {
 
         const dataPb = await photoDAO.searchListPb(search, order, category, page);
 
-        //console.log(dataPb);
+        console.log("Llegada de dataPB -> " + dataPb);
 
         const resPb = convertPb(dataPb, typePb);
 

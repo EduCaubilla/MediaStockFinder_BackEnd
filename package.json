@@ -23,7 +23,7 @@
     "https": "^1.0.0",
     "jsonwebtoken": "^9.0.0",
     "modern-syslog": "^1.2.0",
-    "mongoose": "^7.3.1",
+    "mongoose": "^6.11.2",
     "node-fetch": "^3.3.1",
     "nodemon": "^2.0.22",
     "npm-check-updates": "^16.10.13",

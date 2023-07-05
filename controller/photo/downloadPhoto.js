@@ -1,7 +1,8 @@
-import https from 'follow-redirects';
+import followRedirects from 'follow-redirects';
 
 import photoDAO from '../../model/photo/dao.js';
 
+const https = followRedirects.https;
 
 const downloadPhoto = async (req, res, next) => {
 
@@ -22,20 +23,20 @@ const downloadPhoto = async (req, res, next) => {
         switch (typePhoto) {
             case ('pixabay'):
 
-                var externalReq = https.request(url, function (externalRes) {
+                const externalReqPb = https.request(url, (externalRes) => {
                     res.setHeader("content-disposition", "attachment; filename=imageMsf." + extension);
                     externalRes.pipe(res);
                 });
-                externalReq.end();
+                externalReqPb.end();
                 break;
 
             case ('pexels'):
 
-                var externalReq = https.request(url, function (externalRes) {
+                const externalReqPx = https.request(url, function (externalRes) {
                     res.setHeader("content-disposition", "attachment; filename=imageMsf." + extension);
                     externalRes.pipe(res);
                 });
-                externalReq.end();
+                externalReqPx.end();
                 break;
 
             case ('unsplash'):
@@ -46,12 +47,12 @@ const downloadPhoto = async (req, res, next) => {
 
                 const linkUns = urlUns.url
 
-                var externalReq = https.request(linkUns, function (externalRes) {
+                var externalReqUns = https.request(linkUns, function (externalRes) {
                     res.setHeader("content-disposition", "attachment; filename=imageMsf.jpg");
                     externalRes.pipe(res);
                 });
             
-                externalReq.end();
+                externalReqUns.end();
                 
                 break;
         }

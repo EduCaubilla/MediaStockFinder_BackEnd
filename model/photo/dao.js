@@ -57,30 +57,22 @@ class PhotoDao {
       return data.response;
     }
 
-    async downloadPhoto(request) {
+  async downloadPhoto(requestLink) {
+      let responseDown = false;
 
-      let data;
+      let downRes = await unsplash.photos.trackDownload({
+        downloadLocation: requestLink
+      });
 
-      await unsplash.photos.get({
-        photoId: request
-      })
-      .then((result) => {
-        if (result.type === 'success') {
-          const photo = result.response;
-          data = photo;
-        unsplash.photos.trackDownload({
-          downloadLocation: photo.links.download_location,
-          });
-        }
-      })
+      if (downRes.type === "success") responseDown = true;
 
-      return data.response;
+      return responseDown;
     }
 
     //------------------------- Pixabay methods
 
     async searchOnePb(id) {
-      //console.log("SEARCH ONE PXBAY", id)
+      console.log("SEARCH ONE PXBAY", id)
       let data = await pixabayFindOne(id);
       return data;
     }

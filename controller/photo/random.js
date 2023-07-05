@@ -5,7 +5,9 @@ import convertUns from '../../helper/convertUns.js';
 
 const random = async (req, res, next) => {
 
-    try {
+  try {
+        //UNSPLASH  
+
         const page = req.params.page;
 
         const typeUns = 'unsplash';
@@ -15,8 +17,6 @@ const random = async (req, res, next) => {
         const dataUns = await photoDAO.random(page);
 
         const resUns = convertUns(dataUns, typeUns);
-      
-        console.log("Response random Unsplash -> " + resUns);
 
         //PEXELS
 
@@ -25,14 +25,10 @@ const random = async (req, res, next) => {
         const dataPx = await photoDAO.randomPx(page);
 
         const resPx = convertPx(dataPx, typePx);
-        
-        console.log("Response random Pexels -> " + resPx);
 
         //PIXABAY
 
         const typePb = 'pixabay';
-
-        // search.replaceAll(',', '+')
 
         const search = '';
 
@@ -42,23 +38,19 @@ const random = async (req, res, next) => {
 
         const dataPb = await photoDAO.searchListPb(search, order, category, page);
 
-        // console.log(dataPb);
-
         const resPb = convertPb(dataPb, typePb);
       
-        console.log("Response random Pixabay -> " + resPb);
+        // COMPLETE RESPONSE
 
         resPhoto.push(...resUns, ...resPx, ...resPb);
 
         res.status(201).json(resPhoto);
-
-        // console.log(json(resPhoto));
-
+    
+        console.log("Random list response items -------->" + resPhoto.length);
 
     } catch (error) {
         console.log('error' + error);
     }
-
 }
 
 export default random;

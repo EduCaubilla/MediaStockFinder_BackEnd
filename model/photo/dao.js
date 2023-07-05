@@ -29,15 +29,14 @@ class PhotoDao {
       return data.response;
     }
 
-    async random(page) {
-
+  async random(page) {
       let data = await unsplash.photos.list({
         page: page,
         perPage: 30,
         orderBy: "latest"
       });
 
-      return data;
+      return data.response;
     }
 
     async searchLatest(page) {
@@ -54,8 +53,6 @@ class PhotoDao {
     async getOneRandom() {
 
       let data = await unsplash.photos.getRandom({});
-
-      //console.log("Entra en getOneRandom Unsplash -----------------> \n", data);
 
       return data.response;
     }
@@ -83,19 +80,19 @@ class PhotoDao {
     //------------------------- Pixabay methods
 
     async searchOnePb(id) {
-      console.log("SEARCH ONE PXBAY", id)
+      //console.log("SEARCH ONE PXBAY", id)
       let data = await pixabayFindOne(id);
       return data;
     }
 
     async searchListPb(search, order, category, page) {
-      console.log("SEARCH PXBAY", search)
+      //console.log("SEARCH PXBAY", search)
       let data = await pixabay(search, order, category, page);
       return data;
     }
 
     async searchLatestPb(search, order, category, page) {
-      console.log("LATEST PXBAY", order)
+      //console.log("LATEST PXBAY", order)
       let data = await pixabay(search, order, category, page);
       // console.log(data);
       return data;

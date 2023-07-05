@@ -1,7 +1,8 @@
-import https from 'follow-redirects';
+import followRedirects from 'follow-redirects';
 
 import photoDAO from '../../model/photo/dao.js';
 
+const https = followRedirects.https;
 
 const downloadPhoto = async (req, res, next) => {
 
@@ -21,37 +22,60 @@ const downloadPhoto = async (req, res, next) => {
 
         switch (typePhoto) {
             case ('pixabay'):
+            
+                const dataPb = await photoDAO.searchOnePb(idPhoto)
+                
+                console.log("Descarga de Pixabay ------> \n");
+                
+                console.log(dataPb);
 
-                var externalReq = https.request(url, function (externalRes) {
+                const externalReqPb = https.request(dataPb.hits[0].largeImageURL, (externalRes) => {
                     res.setHeader("content-disposition", "attachment; filename=imageMsf." + extension);
                     externalRes.pipe(res);
                 });
-                externalReq.end();
+                externalReqPb.end();
                 break;
 
             case ('pexels'):
-
-                var externalReq = https.request(url, function (externalRes) {
+                
+                const dataPx = await photoDAO.searchOnePx(idPhoto)
+                
+                console.log("Descarga de Pexels ------> \n");
+                
+                console.log(dataPx);
+                
+                const externalReqPx = https.request(dataPx.src.original, (externalRes) => {
                     res.setHeader("content-disposition", "attachment; filename=imageMsf." + extension);
                     externalRes.pipe(res);
                 });
-                externalReq.end();
+                externalReqPx.end();
                 break;
 
             case ('unsplash'):
 
                 const dataUns = await photoDAO.searchOne(idPhoto)
+                
+                console.log("Descarga de Unsplash ------> \n");
+                
+                console.log(dataUns);
 
-                const urlUns = await photoDAO.downloadPhoto(dataUns.links.download_location)
+                const notifyDownload = await photoDAO.downloadPhoto(dataUns.links.download_location);
 
-                const linkUns = urlUns.url
+                console.log("Descarga notificada --------> " + notifyDownload);
+                
+                if (!notifyDownload) {
+                  console.log("Error en la notificación de la descarga de Unsplash para " + idPhoto);
+                }
 
-                var externalReq = https.request(linkUns, function (externalRes) {
+                const linkUns = dataUns.urls.full;
+                console.log('Link para descarga :>> ', linkUns);
+
+                var externalReqUns = https.request(linkUns, (externalRes) => {
                     res.setHeader("content-disposition", "attachment; filename=imageMsf.jpg");
                     externalRes.pipe(res);
                 });
             
-                externalReq.end();
+                externalReqUns.end();
                 
                 break;
         }
@@ -59,7 +83,6 @@ const downloadPhoto = async (req, res, next) => {
     } catch (err) {
         console.log('error en el controller' + err);
     }
-
 }
 
 export default downloadPhoto;

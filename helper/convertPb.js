@@ -1,7 +1,7 @@
 const convertPb = (data, type) => {
 
     // console.log(type);
-    console.log('entra en convertPb');
+    //console.log('entra en convertPb');
 
     let arrMsf = [];
 

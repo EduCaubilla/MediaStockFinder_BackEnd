@@ -29,15 +29,14 @@ class PhotoDao {
       return data.response;
     }
 
-    async random(page) {
-
+  async random(page) {
       let data = await unsplash.photos.list({
         page: page,
         perPage: 30,
         orderBy: "latest"
       });
 
-      return data;
+      return data.response;
     }
 
     async searchLatest(page) {
@@ -55,29 +54,19 @@ class PhotoDao {
 
       let data = await unsplash.photos.getRandom({});
 
-      //console.log("Entra en getOneRandom Unsplash -----------------> \n", data);
-
       return data.response;
     }
 
-    async downloadPhoto(request) {
+  async downloadPhoto(requestLink) {
+      let responseDown = false;
 
-      let data;
+      let downRes = await unsplash.photos.trackDownload({
+        downloadLocation: requestLink
+      });
 
-      await unsplash.photos.get({
-        photoId: request
-      })
-      .then((result) => {
-        if (result.type === 'success') {
-          const photo = result.response;
-          data = photo;
-        unsplash.photos.trackDownload({
-          downloadLocation: photo.links.download_location,
-          });
-        }
-      })
+      if (downRes.type === "success") responseDown = true;
 
-      return data.response;
+      return responseDown;
     }
 
     //------------------------- Pixabay methods
@@ -89,13 +78,13 @@ class PhotoDao {
     }
 
     async searchListPb(search, order, category, page) {
-      console.log("SEARCH PXBAY", search)
+      //console.log("SEARCH PXBAY", search)
       let data = await pixabay(search, order, category, page);
       return data;
     }
 
     async searchLatestPb(search, order, category, page) {
-      console.log("LATEST PXBAY", order)
+      //console.log("LATEST PXBAY", order)
       let data = await pixabay(search, order, category, page);
       // console.log(data);
       return data;

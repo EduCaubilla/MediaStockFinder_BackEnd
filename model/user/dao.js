@@ -1,53 +1,55 @@
 import User from '../../model/user/model.js'
+import connection from '../../dbMongo/mongo.js';
 
 class UserDAO {
 
     constructor() {}
 
-    register(user) {
-        return new User(user).save();
+    async register(user) {
+        return await new User(user).save();
     }
 
-    findUser(email) {
-        return User.findOne(email);
+    async findUser(userEmail) {
+      return await User.findOne({ email: userEmail }).exec();
     }
 
-    findUserById(id) {
-        return User.findById(id);
+    async findUserById(id) {
+        return await User.findById(id).exec();
     }
 
-    listOne(id) {
-        return User.findById(id);
+    async listOne(id) {
+        return await User.findById(id).exec();
     }
 
-    updateUser(id, user) {
+    // Pendiente
+  
+    async updateUser(id, user) {
         console.log('LLEGA CONTRA DB' + user);
-        return User.findByIdAndUpdate(
+        return await User.findByIdAndUpdate(
             id,
-            user, {
-                'useFindAndModify': false,
+            user,
+            {
                 'new': true
             });
     }
 
-    updateDesk(id, desk) {
-        return User.findByIdAndUpdate(
-            id, {
+    async updateDesk(id, desk) {
+        return await User.findByIdAndUpdate(
+            id,
+            {
                 $push: {
                     'desk': desk
                 }
-            }, {
-                'useFindAndModify': false,
+            },
+            {
                 'new': true
             }
-
         )
     }
 
-    deleteUser(id) {
-        return User.findByIdAndRemove(id);
+    async deleteUser(id) {
+        return await User.findByIdAndRemove(id);
     }
-
 }
 
 export default new UserDAO;

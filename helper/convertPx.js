@@ -29,6 +29,8 @@ const convertPx = (data, type) => {
 
         objMsf.downloadLink = result.src.original;
         objMsf.imageSourceLink = result.url;
+        
+        objMsf.media = "image";
 
         arrMsf.push(objMsf);
     })

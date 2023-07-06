@@ -19,7 +19,7 @@ console.log(url);
 //   }
 // });
 
-const connection = mongoose.connect(url, {
+const connection = await mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

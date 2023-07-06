@@ -34,10 +34,11 @@ const convertOnePbVideo = (data, type) => {
     objMsf.downloadLink = result.videos.large.url;
     objMsf.imageSourceLink = result.pageURL;
 
+    objMsf.media = "video";
+
     arrMsf.push(objMsf);
 
-
-    console.log(arrMsf);
+    //console.log(arrMsf);
 
     return arrMsf;
 }

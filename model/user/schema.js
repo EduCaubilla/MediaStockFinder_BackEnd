@@ -22,8 +22,8 @@ const userSchema = mongoose.Schema({
     },
 
     desk: [{
-        font: String,
-        idFont: String,
+        source: String,
+        idSource: String,
         title: String,
         description: String,
         authorName: String,
@@ -37,7 +37,8 @@ const userSchema = mongoose.Schema({
         imageThumb: String,
         imageSmall: String,
         imageMedium: String,
-        imageLarge: String
+        imageLarge: String,
+        media: String
     }]
 });
 

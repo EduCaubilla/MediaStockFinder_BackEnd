@@ -36,6 +36,8 @@ const convert = (data, type) => {
     objMsf.downloadLink = result.links.download_location;
 
     objMsf.imageSourceLink = result.links.html;
+  
+    objMsf.media = "image";
 
     arrMsf.push(objMsf);
 

@@ -34,13 +34,10 @@ const convertOnePxVideo = (data, type) => {
 
     objMsf.downloadLink = result.video_files[0].link;
     objMsf.imageSourceLink = result.url;
-
-
+    
+    objMsf.media = "video";
 
     arrMsf.push(objMsf);
-
-
-    // console.log(arrMsf);
 
     return arrMsf;
 }

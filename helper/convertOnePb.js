@@ -29,6 +29,8 @@ const convertOnePb = (data, type) => {
 
     objMsf.downloadLink = result.largeImageURL;
     objMsf.imageSourceLink = result.pageURL;
+  
+    objMsf.media = "image";
 
     arrMsf.push(objMsf);
 

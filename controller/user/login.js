@@ -15,11 +15,11 @@ const login = async (req, res, next) => {
 
         const body = req.body;
 
+        console.log("ENTRA EN LOGIN -----_>");
+      
         console.log(body);
 
-        const user = await userDAO.findUser({
-            email: body.email
-        });
+        const user = await userDAO.findUser(body.email);
 
         console.log(user);
 

@@ -32,11 +32,9 @@ const convertOnePx = (data, type) => {
 
     objMsf.downloadLink = result.src.original;
     objMsf.imageSourceLink = result.url;
+    objMsf.media = "image";
 
     arrMsf.push(objMsf);
-
-
-    // console.log(arrMsf);
 
     return arrMsf;
 }

@@ -36,7 +36,8 @@ const convertPbVideo = (data, type) => {
 
         objMsf.imageSourceLink = result.pageURL;
         objMsf.downloadLink = result.videos.large.url;
-
+      
+        objMsf.media = "video";
 
         arrMsf.push(objMsf);
     })

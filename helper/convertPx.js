@@ -12,7 +12,7 @@ const convertPx = (data, type) => {
         objMsf.source = type;
 
         objMsf.idSource = result.id;
-        objMsf.title = 'Untitled';
+        objMsf.title = result.alt;
         objMsf.description = '';
         objMsf.authorName = result.photographer;
         objMsf.authorImage = '';

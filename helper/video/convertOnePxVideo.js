@@ -16,7 +16,7 @@ const convertOnePxVideo = (data, type) => {
     objMsf.source = type;
 
     objMsf.idSource = `${result.id}`;
-    objMsf.title = 'Untitled';
+    objMsf.title = ' ';
     objMsf.description = result.tags.join();
     objMsf.authorName = result.user.name;
     objMsf.authorImage = '';

@@ -15,8 +15,8 @@ const convertOnePx = (data, type) => {
     objMsf.source = type;
 
     objMsf.idSource = result.id;
-    objMsf.title = 'Untitled';
-    objMsf.description = '';
+    objMsf.title = result.alt;
+    objMsf.description = ' ';
     objMsf.authorName = result.photographer;
     objMsf.authorImage = '';
     objMsf.authorLink = result.photographer_url;

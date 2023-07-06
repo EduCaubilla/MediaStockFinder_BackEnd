@@ -13,7 +13,7 @@ const convertOnePb = (data, type) => {
     objMsf.source = type;
 
     objMsf.idSource = result.id;
-    objMsf.title = 'Untitled';
+    objMsf.title = ' ';
     objMsf.description = result.tags;
     objMsf.authorName = result.user;
     objMsf.authorImage = result.userImageURL;

@@ -15,17 +15,17 @@ const catLatest = async (req, res, next) => {
         const data1 = await photoDAO.searchLatest(1);
         const resUnsplash1 = convertUns(data1, type);
 
-        const data2 = await photoDAO.searchLatest(2);
-        const resUnsplash2 = convertUns(data2, type);
+        // const data2 = await photoDAO.searchLatest(2);
+        // const resUnsplash2 = convertUns(data2, type);
 
-        const data3 = await photoDAO.searchLatest(3);
-        const resUnsplash3 = convertUns(data3, type);
+        // const data3 = await photoDAO.searchLatest(3);
+        // const resUnsplash3 = convertUns(data3, type);
 
-        const data4 = await photoDAO.searchLatest(4);
-        const resUnsplash4 = convertUns(data4, type);
+        // const data4 = await photoDAO.searchLatest(4);
+        // const resUnsplash4 = convertUns(data4, type);
 
-        const data5 = await photoDAO.searchLatest(5);
-        const resUnsplash5 = convertUns(data5, type);
+        // const data5 = await photoDAO.searchLatest(5);
+        // const resUnsplash5 = convertUns(data5, type);
 
         //PEXELS
 
@@ -54,8 +54,7 @@ const catLatest = async (req, res, next) => {
         const resPb = convertPb(dataPb, typePb);
 
 
-        resPhoto.push(...resUnsplash1, ...resUnsplash2, ...resUnsplash3,
-            ...resUnsplash4, ...resUnsplash5, ...resPx, ...resPb);
+        resPhoto.push(...resUnsplash1, ...resPx, ...resPb);
 
         res.status(201).json(resPhoto);
 

@@ -25,21 +25,21 @@ const catPeople = async (req, res, next) => {
         // console.log(data);
         const resUnsplash1 = convertUns(data1, type);
 
-        const data2 = await photoDAO.searchList(search, 2);
-        // console.log(data);
-        const resUnsplash2 = convertUns(data2, type);
+        // const data2 = await photoDAO.searchList(search, 2);
+        // // console.log(data);
+        // const resUnsplash2 = convertUns(data2, type);
 
-        const data3 = await photoDAO.searchList(search, 3);
-        // console.log(data);
-        const resUnsplash3 = convertUns(data3, type);
+        // const data3 = await photoDAO.searchList(search, 3);
+        // // console.log(data);
+        // const resUnsplash3 = convertUns(data3, type);
 
-        const data4 = await photoDAO.searchList(search, 4);
-        // console.log(data);
-        const resUnsplash4 = convertUns(data4, type);
+        // const data4 = await photoDAO.searchList(search, 4);
+        // // console.log(data);
+        // const resUnsplash4 = convertUns(data4, type);
 
-        const data5 = await photoDAO.searchList(search, 5);
-        // console.log(data);
-        const resUnsplash5 = convertUns(data5, type);
+        // const data5 = await photoDAO.searchList(search, 5);
+        // // console.log(data);
+        // const resUnsplash5 = convertUns(data5, type);
 
 
         //PEXELS
@@ -68,8 +68,7 @@ const catPeople = async (req, res, next) => {
         const resPb = convertPb(dataPb, typePb);
 
 
-        resPhoto.push(...resUnsplash1, ...resUnsplash2, ...resUnsplash3,
-            ...resUnsplash4, ...resUnsplash5, ...resPx, ...resPb);
+        resPhoto.push(...resUnsplash1, ...resPx, ...resPb);
 
         console.log(resPhoto);
 

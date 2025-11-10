@@ -35,7 +35,7 @@ app.use(express.json());
 app.use('/user', routerUser);
 app.use('/photo', routerPhoto);
 app.use('/video', routerVideo);
-app.use("*", routerError);
+app.use('/error', routerError);
 
 
 const PORT = process.env.PORT || 9000;

@@ -5,7 +5,7 @@ const https = followRedirects.https;
 const downloadVideo = async (req, res, next) => {
 
     try {
-        const urlVideo = req.params[0];
+        const urlVideo = req.params.url;
         console.log(urlVideo);
 
         const url = Buffer.from(urlVideo, 'base64').toString('binary');

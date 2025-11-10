@@ -13,7 +13,7 @@ const downloadPhoto = async (req, res, next) => {
         const typePhoto = req.params.type;
         console.log(typePhoto);
 
-        const urlPhoto = req.params[0];
+        const urlPhoto = req.params.url;
         console.log(urlPhoto);
 
         const url = urlPhoto;

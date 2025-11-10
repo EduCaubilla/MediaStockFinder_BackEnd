@@ -18,7 +18,7 @@ router.route('/categories/latest').get(catLatest);
 router.route('/categories/nature').get(catNature);
 router.route('/categories/people').get(catPeople);
 
-router.route("/download/:id/:type/*").get(downloadPhoto);
+router.route("/download/:id/:type/:url").get(downloadPhoto);
 
 router.route("/onerandom").get(oneRandom);
 router.route('/random/:page').get(random);

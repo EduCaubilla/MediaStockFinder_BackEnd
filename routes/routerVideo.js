@@ -8,7 +8,7 @@ import downloadVideo from '../controller/video/downloadVideo.js';
 
 const router = Router();
 
-router.route("/download/*").get(downloadVideo);
+router.route("/download/:url").get(downloadVideo);
 
 router.route("/random/:page").get(searchRandom);
 router.route("/:search/:page").get(searchList);

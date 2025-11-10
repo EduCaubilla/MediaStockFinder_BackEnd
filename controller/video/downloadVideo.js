@@ -1,7 +1,5 @@
 import followRedirects from 'follow-redirects';
 
-import atob from 'atob';
-
 const https = followRedirects.https;
 
 const downloadVideo = async (req, res, next) => {
@@ -10,7 +8,7 @@ const downloadVideo = async (req, res, next) => {
         const urlVideo = req.params[0];
         console.log(urlVideo);
 
-        const url = atob(`${urlVideo}`);
+        const url = Buffer.from(urlVideo, 'base64').toString('binary');
         console.log(url);
 
         var externalReq = https.request(url, function (externalRes) {

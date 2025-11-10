@@ -27,7 +27,7 @@
     "unsplash-js": "^7.0.20"
   },
   "engines": {
-    "node": ">=24.0.0"
+    "node": ">=16 || 14 >=14.18"
   },
   "description": ""
 }

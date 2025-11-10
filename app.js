@@ -11,11 +11,22 @@ dotenv.config();
 
 const app = express();
 
-var corsOptions = {
-  httpOnly: true,
-  secure: true,
-  sameSite: 'none',
-}
+const allowedOrigins = [
+  'https://mediastockfinder.netlify.app',
+  'http://localhost:5173' // For local development
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, etc.)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // If you send cookies or auth headers
+};
 
 app.use(cors(corsOptions));
 app.use(express.json());
